@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    style="@style/Widget.PHearing.LightCardView">
+
+    <TextView
+        android:id="@+id/widget_list_dialog_item_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:textSize="20sp"
+        android:textColor="@color/PHearing_white"
+        android:gravity="center"
+        tools:text="1111"/>
+</com.google.android.material.card.MaterialCardView>

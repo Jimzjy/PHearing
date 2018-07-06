@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="LineChart">
+        <attr name="axisTextColor" format="color" />
+        <attr name="positionLineColor" format="color" />
+        <attr name="pointColor" format="color" />
+        <attr name="xPointColor" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="CurveChart">
+        <attr name="c_axisTextColor" format="color" />
+        <attr name="c_positionLineColor" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="PointIndicator">
+        <attr name="indicatorMainPointColor" format="color" />
+        <attr name="indicatorOtherPointColor" format="color" />
+        <attr name="indicatorPointRadius" format="dimension" />
+    </declare-styleable>
+</resources>

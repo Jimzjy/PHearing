@@ -1,0 +1,59 @@
+<resources>
+    <string name="app_name">PHearing</string>
+
+    <string name="measure_headphone">Measure Headphone</string>
+    <string name="measure_data_format">Side: %s Freq: %d dB: %.1f</string>
+    <string name="measure_prepare_hint">Please put your headphone\'s right side close to your phone\'s mic and then you can click the start to start the measurement.\n\nIf it\'s your first time using the program, there are some guides to you, just slide to the right</string>
+    <string name="measure_change_side">Good! We have got the right side data, now put your headphone\'s left side close to your phone\'s mic and click the continue button to continue</string>
+    <string name="measure_chart_hint">The chart shows the max and min dBHL(0 ~ 70) of frequency(0 ~ 8000) data of your headphone.\n\nYou can click the close button at top left to close the hint page to see the real chart and touch the data area at top to let the hint page back</string>
+    <string name="measure_finish_hint">Excellent! We have finish the measurement, you can click the close button to see what we have got.\n\nYou can click the add button below to save the data or just click the start button below to start a new measurement</string>
+    <string name="measure_stop_hint">If you want to stop the measurement click the stop button below, or just click the back button at top bar</string>
+    <string name="measure_room_name">Name</string>
+    <string name="measure_error_hint">name is empty</string>
+    <string name="measure_add_headphone_successful">Add headphone successful</string>
+    <string name="measure_add_headphone_error">ERROR: left or right data not get</string>
+
+    <string name="audiometry">Audiometry</string>
+    <string name="audiometry_unheard">unheard</string>
+    <string name="audiometry_heard">heard</string>
+    <string name="audiometry_reply">replay</string>
+    <string name="audiometry_data_format">Side: %s Freq: %d dBHL: %d</string>
+    <string name="audiometry_prepare_hint">Please put on your headphone and click the start button below to select your headphone data and start the audiometry\n\nIf it\'s your first time using the program, there are some guides to you, just slide to the right</string>
+    <string name="audiometry_control_hint0">When you start the audiometry, there will be 3 buttons at bottom ( unheard, replay, heard)</string>
+    <string name="audiometry_control_hint1">The program will play a tone, when the tone is playing, the replay button will rotating, and the tone\'s data will be show in the data area at top\n\nIf you heard the tone, click the heard button, if not, click the unheard button, if not sure, click the replay button to replay the tone</string>
+    <string name="audiometry_finish_hint0">The Audiometry is finish, you can click the close button to see the chart, and this is your result</string>
+    <string name="audiometry_result">Right: average (%.1f dBHL) Damage Level (%s)\n\nLeft: average (%.1f dBHL) Damage Level (%s)</string>
+    <string name="audiometry_finish_hint1">If you want to start a new audiometry, click the button below</string>
+    <string name="audiometry_level_normal">Normal</string>
+    <string name="audiometry_level_light">Light</string>
+    <string name="audiometry_level_medium">Medium</string>
+    <string name="audiometry_level_medium_heavy">Medium Heavy</string>
+    <string name="audiometry_chart_hint">The chart will show the min dBHL you can hear of the specified frequency, like the chart below. But sometimes the headphone data we get is not complete, so there will be some different.\n\nThe Rule of add point is:\n1.You can hear the tone when the volume is rising or You can not hear the tone when the volume is falling.\n2.Min data of headphone under 25 dBHL, and you can still hear the tone\n3.Max data of headphone is 70 and you can not hear when the dBHL is 70.</string>
+    <string name="audiometry_introduction">The test will help find your hearing loss level, make sure you are in are quiet place and then click the button below</string>
+
+    <string name="speech">Speech</string>
+    <string name="speech_introduction">The test will test your word recognition ability, make sure you are in are quiet place and then click the button below</string>
+
+    <string name="history">History</string>
+
+    <string name="news">News</string>
+
+    <string name="ph_start">Start</string>
+    <string name="ph_stop">Stop</string>
+    <string name="ph_continue">Continue</string>
+    <string name="close">Close</string>
+    <string name="left">Left</string>
+    <string name="right">Right</string>
+    <string name="stereo">Stereo</string>
+    <string name="add">Add</string>
+    <string name="menu">Menu</string>
+    <string name="test">Test</string>
+    <string name="select_headphone_from_below">Please select your headphone data of the following</string>
+    <string name="headphone_data">Headphone Data</string>
+    <string name="disabled">Disabled</string>
+    <string name="minute5">5 Minutes</string>
+    <string name="search">Search</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
+</resources>

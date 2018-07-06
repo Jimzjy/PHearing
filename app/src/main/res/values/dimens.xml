@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="app_bar_height">56dp</dimen>
+    <dimen name="app_bar_icon_size">44dp</dimen>
+
+    <dimen name="dialog_width">292dp</dimen>
+    <dimen name="dialog_height">400dp</dimen>
+
+    <dimen name="hint_content_padding">8dp</dimen>
+</resources>

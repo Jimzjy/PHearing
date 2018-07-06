@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/hint_content_padding">
+
+    <TextView
+        android:id="@+id/hint_audiometry1_tv0"
+        style="@style/Widget.PHearing.HintTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/audiometry_control_hint0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/hint_audiometry1_iv0"
+        style="@style/ControlImage"
+        android:layout_marginTop="16dp"
+        android:contentDescription="@string/audiometry_unheard"
+        android:src="@drawable/vector_drawable_clear"
+        app:layout_constraintEnd_toStartOf="@+id/hint_audiometry1_iv1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hint_audiometry1_tv0" />
+
+    <ImageView
+        android:id="@+id/hint_audiometry1_iv1"
+        style="@style/ControlImage"
+        android:layout_marginTop="16dp"
+        android:contentDescription="@string/audiometry_reply"
+        android:src="@drawable/vector_drawable_replay"
+        app:layout_constraintEnd_toStartOf="@+id/hint_audiometry1_iv2"
+        app:layout_constraintStart_toEndOf="@+id/hint_audiometry1_iv0"
+        app:layout_constraintTop_toBottomOf="@+id/hint_audiometry1_tv0" />
+
+    <ImageView
+        android:id="@+id/hint_audiometry1_iv2"
+        style="@style/ControlImage"
+        android:layout_marginTop="16dp"
+        android:contentDescription="@string/audiometry_heard"
+        android:src="@drawable/vector_drawable_check"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/hint_audiometry1_iv1"
+        app:layout_constraintTop_toBottomOf="@+id/hint_audiometry1_tv0" />
+
+    <TextView
+        android:id="@+id/hint_audiometry1_tv1"
+        style="@style/Widget.PHearing.HintTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/audiometry_control_hint1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hint_audiometry1_iv1" />
+</androidx.constraintlayout.widget.ConstraintLayout>

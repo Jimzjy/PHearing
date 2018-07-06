@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#42A5F5</color>
+    <color name="colorPrimaryDark">#1E88E5</color>
+    <color name="colorPrimaryLight">#64B5F6</color>
+    <color name="colorPrimaryTrans">#AA42A5F5</color>
+    <color name="colorAccent">#E91E63</color>
+    <color name="textColorPrimary">#FAFAFA</color>
+
+    <color name="axisTextColor">#212121</color>
+    <color name="positionLineColor">#BDBDBD</color>
+    <color name="PHearing_white">#FAFAFA</color>
+    <color name="PHearing_grey">#B0BEC5</color>
+    <color name="PHearing_text_grey">@android:color/tertiary_text_light</color>
+</resources>
