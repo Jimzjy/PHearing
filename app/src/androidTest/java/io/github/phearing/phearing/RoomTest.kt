@@ -38,7 +38,7 @@ class RoomTest {
         mDao.insert(headphone)
         val list = mDao.loadAll()
         Log.e("RoomTest", list.toString())
-        Log.e("RoomTest2", list.size.toString())
+        Log.e("RoomTest2", list.value?.size.toString())
 
         assertTrue(false)
         //if (list.isEmpty()) assertTrue(false)

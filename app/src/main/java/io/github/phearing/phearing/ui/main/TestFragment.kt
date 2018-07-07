@@ -10,6 +10,7 @@ import android.view.ViewGroup
 
 import io.github.phearing.phearing.R
 import io.github.phearing.phearing.ui.audiometry.AudiometryActivity
+import io.github.phearing.phearing.ui.speech.SpeechActivity
 import kotlinx.android.synthetic.main.fragment_test.view.*
 
 
@@ -30,7 +31,7 @@ class TestFragment : Fragment() {
             startActivity(Intent(context, AudiometryActivity::class.java))
         }
         view.main_test_spam_bt.setOnClickListener {
-
+            startActivity(Intent(context, SpeechActivity::class.java))
         }
     }
 }

@@ -1,7 +1,8 @@
+speech.dic
+table_1
 zh-ptm/feat.params
 zh-ptm/mdef
 zh-ptm/means
-zh-ptm/mixture_weights
 zh-ptm/noisedict
 zh-ptm/sendump
 zh-ptm/transition_matrices
