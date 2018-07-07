@@ -28,19 +28,18 @@ android {
 }
 
 dependencies {
-    def lifecycle_version = "2.0.0-alpha1"
-    def room_version = "2.0.0-alpha1"
+    def lifecycle_version = "2.0.0-beta01"
+    def room_version = "2.0.0-beta01"
     def dagger_version = "2.15"
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'com.google.android.material:material:1.0.0-alpha3'
-    implementation 'androidx.appcompat:appcompat:1.0.0-alpha3'
+    implementation 'androidx.appcompat:appcompat:1.0.0-beta01'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.2'
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
     implementation "androidx.room:room-runtime:$room_version"
     implementation "com.google.dagger:dagger:$dagger_version"
     implementation 'androidx.legacy:legacy-support-v4:1.0.0-alpha3'
-    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0-alpha1'
     testImplementation 'junit:junit:4.12'
     testImplementation "androidx.room:room-testing:$room_version"
     androidTestImplementation 'androidx.test:runner:1.1.0-alpha3'
@@ -50,3 +49,7 @@ dependencies {
     kapt "com.google.dagger:dagger-compiler:$dagger_version"
     implementation project(':pocketsphinx')
 }
+
+ant.importBuild 'assets.xml'
+preBuild.dependsOn(list, checksum)
+clean.dependsOn(clean_assets)
