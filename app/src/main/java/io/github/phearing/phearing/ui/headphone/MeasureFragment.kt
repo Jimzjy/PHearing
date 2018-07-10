@@ -18,6 +18,7 @@ import io.github.phearing.phearing.common.widget.CurveChart
 import io.github.phearing.phearing.common.widget.EDIT_DIALOG_DATA
 import io.github.phearing.phearing.common.widget.EditDialog
 import io.github.phearing.phearing.databinding.FragmentMeasureBinding
+import kotlinx.android.synthetic.main.hint_measure0.view.*
 
 const val MAX_LINE_COLOR_RIGHT = "#E91E63"
 const val MIN_LINE_COLOR_RIGHT = "#2196F3"
@@ -134,11 +135,18 @@ class MeasureFragment : Fragment() {
                 list
             }
             MEASURE_PREPARE -> {
-                val view0 = getView<ConstraintLayout>(R.layout.hint_measure0)
+                val view0 = getView<ScrollView>(R.layout.hint_measure0)
                 val view1 = getView<ConstraintLayout>(R.layout.hint_measure1)
 
                 val startBT = view0.findViewById<MaterialButton>(R.id.hint_measure0_bt)
-                startBT.setOnClickListener { mViewModel.startMeasure() }
+                startBT.setOnClickListener {
+                    view0.hint_measure0_et.text?.let {
+                        if (it.isNotEmpty()) {
+                            mViewModel.micOffset = it.toString().toInt()
+                        }
+                    }
+                    mViewModel.startMeasure()
+                }
                 val curveChart = view1.findViewById<CurveChart>(R.id.hint_measure1_curve_chart)
                 curveChart.maxY = 10f
                 curveChart.maxX = 10f

@@ -33,7 +33,7 @@
                 style="@style/AppBar_Icon"
                 android:layout_marginEnd="16dp"
                 android:contentDescription="@string/test"
-                android:src="@drawable/vector_drawable_hearing"
+                android:src="@drawable/vector_drawable_sun"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/main_divide"
                 app:layout_constraintTop_toTopOf="parent" />

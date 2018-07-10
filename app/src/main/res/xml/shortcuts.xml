@@ -5,7 +5,7 @@
     <shortcut
         android:shortcutId="audiometry"
         android:enabled="true"
-        android:icon="@drawable/vector_drawable_hearing"
+        android:icon="@drawable/audiometry_icon"
         android:shortcutShortLabel="@string/audiometry"
         android:shortcutLongLabel="@string/audiometry"
         android:shortcutDisabledMessage="@string/disabled">
@@ -13,10 +13,19 @@
             android:action="android.intent.action.VIEW"
             android:targetPackage="io.github.phearing.phearing"
             android:targetClass="io.github.phearing.phearing.ui.audiometry.AudiometryActivity" />
-        <!-- If your shortcut is associated with multiple intents, include them
-             here. The last intent in the list determines what the user sees when
-             they launch this shortcut. -->
         <categories android:name="android.shortcut.conversation" />
     </shortcut>
-    <!-- Specify more shortcuts here. -->
+    <shortcut
+        android:shortcutId="speech"
+        android:enabled="true"
+        android:icon="@drawable/speech_icon"
+        android:shortcutShortLabel="@string/speech"
+        android:shortcutLongLabel="@string/speech"
+        android:shortcutDisabledMessage="@string/disabled">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="io.github.phearing.phearing"
+            android:targetClass="io.github.phearing.phearing.ui.speech.SpeechActivity" />
+        <categories android:name="android.shortcut.conversation" />
+    </shortcut>
 </shortcuts>

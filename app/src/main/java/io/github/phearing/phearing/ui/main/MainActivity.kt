@@ -11,9 +11,12 @@ import androidx.core.view.GravityCompat
 import androidx.viewpager.widget.ViewPager
 import io.github.phearing.phearing.R
 import io.github.phearing.phearing.common.ViewPagerFragmentAdapter
+import io.github.phearing.phearing.ui.auth.AuthActivity
 import io.github.phearing.phearing.ui.history.HistoryActivity
 import io.github.phearing.phearing.ui.headphone.HeadphoneActivity
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.layout_navigation_header.*
+import kotlinx.android.synthetic.main.layout_navigation_header.view.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -46,6 +49,10 @@ class MainActivity : AppCompatActivity() {
                 }
             }
             true
+        }
+        main_navigation_view.getHeaderView(0).main_username_tv.text = "JC"
+        main_navigation_view.getHeaderView(0).main_username_tv.setOnClickListener {
+            startActivity(Intent(this@MainActivity, AuthActivity::class.java))
         }
 
         val barIcon = arrayOf(main_test_iv, main_news_iv)

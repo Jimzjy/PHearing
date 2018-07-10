@@ -27,6 +27,7 @@ class HeadphoneMeasurer {
     private var mVolumeDefault = 1
     private val context = PHApplication.instance.applicationContext
 
+    var micOffset = 10
     var isStart = false
 
     /**
@@ -72,7 +73,7 @@ class HeadphoneMeasurer {
                                     e.printStackTrace()
                                 }
                             }
-                            dbList.add(db)
+                            dbList.add(db + micOffset)
                         }
                         volume += 1
                     }

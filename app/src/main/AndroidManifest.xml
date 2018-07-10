@@ -27,7 +27,8 @@
         <activity android:name=".ui.headphone.HeadphoneActivity" />
         <activity android:name=".ui.audiometry.AudiometryActivity" />
         <activity android:name=".ui.history.HistoryActivity" />
-        <activity android:name=".ui.speech.SpeechActivity"></activity>
+        <activity android:name=".ui.speech.SpeechActivity" />
+        <activity android:name=".ui.auth.AuthActivity"></activity>
     </application>
 
 </manifest>

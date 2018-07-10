@@ -12,6 +12,7 @@
     <string name="measure_error_hint">name is empty</string>
     <string name="measure_add_headphone_successful">Add headphone successful</string>
     <string name="measure_add_headphone_error">ERROR: left or right data not get</string>
+    <string name="measure_adjust_mic_hint">You can adjust what your mic\'s offset, default is +10</string>
 
     <string name="audiometry">Audiometry</string>
     <string name="audiometry_unheard">unheard</string>
@@ -48,6 +49,9 @@
 
     <string name="news">News</string>
 
+    <string name="auth_login">Login</string>
+    <string name="auth_register">Register</string>
+
     <string name="ph_start">Start</string>
     <string name="ph_stop">Stop</string>
     <string name="ph_continue">Continue</string>
@@ -72,6 +76,10 @@
     <string name="score">Score: </string>
     <string name="test_table">Test Table: </string>
     <string name="delete">Delete</string>
+    <string name="avatar">Avatar</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="adjust">Adjust</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>

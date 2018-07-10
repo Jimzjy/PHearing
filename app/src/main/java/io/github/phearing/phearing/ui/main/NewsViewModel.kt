@@ -27,7 +27,7 @@ class NewsViewModel(application: Application) : AndroidViewModel(application) {
                 NewsData("Android Studio 3.2 Beta 版本已经发布", "Android Studio 3.2 Beta 版本已经发布。官方 Android IDE 的最新版本可帮助开发者快速上手Android Jetpack、Android P 开发者预览版以及新的 Android App Bundle 格式。它还包括 Emulator Snapshots 和 Energy Profiler",
                         null),
                 NewsData("Android Studio 3.2 Beta 版本已经发布", "Android Studio 3.2 Beta 版本已经发布。官方 Android IDE 的最新版本可帮助开发者快速上手Android Jetpack、Android P 开发者预览版以及新的 Android App Bundle 格式。它还包括 Emulator Snapshots 和 Energy Profiler",
-                        ContextCompat.getDrawable(application, R.drawable.vector_drawable_hearing)!!),
+                        ContextCompat.getDrawable(application, R.drawable.vector_drawable_sun)!!),
                 NewsData("Android Studio 3.2 Beta 版本已经发布", "Android Studio 3.2 Beta 版本已经发布。官方 Android IDE 的最新版本可帮助开发者快速上手Android Jetpack、Android P 开发者预览版以及新的 Android App Bundle 格式。它还包括 Emulator Snapshots 和 Energy Profiler",
                         null),
                 NewsData("Android Studio 3.2 Beta 版本已经发布", "Android Studio 3.2 Beta 版本已经发布。官方 Android IDE 的最新版本可帮助开发者快速上手Android Jetpack、Android P 开发者预览版以及新的 Android App Bundle 格式。它还包括 Emulator Snapshots 和 Energy Profiler",

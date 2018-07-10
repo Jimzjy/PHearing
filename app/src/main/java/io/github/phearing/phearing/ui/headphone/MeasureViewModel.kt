@@ -25,7 +25,6 @@ class MeasureViewModel(application: Application) : AndroidViewModel(application)
     val dataText = MutableLiveData<String>()
     val state = MutableLiveData<Int>()
     val isHintOpen = MutableLiveData<Boolean>()
-
     val minDbListRight = MutableLiveData<FloatArray>()
     val maxDbListRight = MutableLiveData<FloatArray>()
     val minDbListLeft = MutableLiveData<FloatArray>()
@@ -33,7 +32,7 @@ class MeasureViewModel(application: Application) : AndroidViewModel(application)
 
     @Inject
     lateinit var headphoneRepo: HeadphoneRepo
-
+    var micOffset = 10
     private var mHpMeasurer: HeadphoneMeasurer? = null
     private var mDbHLVolume = arrayOf("", "")
     private var mSide = TONE_SIDE_RIGHT
@@ -52,6 +51,7 @@ class MeasureViewModel(application: Application) : AndroidViewModel(application)
         state.value = MEASURE_START
         isHintOpen.value = false
         if (mHpMeasurer == null) initHpMeasurer()
+        mHpMeasurer?.micOffset = micOffset
         mHpMeasurer?.startMeasure(mSide)
     }
 
@@ -71,7 +71,6 @@ class MeasureViewModel(application: Application) : AndroidViewModel(application)
         } else {
             false
         }
-
     }
 
     private fun initHpMeasurer() {
@@ -87,6 +86,7 @@ class MeasureViewModel(application: Application) : AndroidViewModel(application)
         val minList = mutableListOf<Float>()
         var freq = 125f
         val volume = StringBuilder()
+
         dbHLVolumeList.forEach {
             for (i in 0 until it.size) {
                 if (it[i] >= 0) {
