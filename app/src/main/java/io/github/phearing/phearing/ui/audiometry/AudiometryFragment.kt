@@ -48,6 +48,7 @@ class AudiometryFragment : Fragment() {
 
     override fun onStop() {
         super.onStop()
+        mViewModel.startPlayAnimation.value = 0
         mViewModel.stop()
     }
 

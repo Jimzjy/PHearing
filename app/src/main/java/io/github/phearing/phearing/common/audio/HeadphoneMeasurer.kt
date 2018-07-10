@@ -5,8 +5,7 @@ import android.content.Context
 import android.media.AudioManager
 import android.os.Handler
 import dagger.Component
-import io.github.phearing.phearing.common.application.ApplicationComponent
-import io.github.phearing.phearing.common.application.PHApplication
+import io.github.phearing.phearing.common.PHApplication
 import javax.inject.Inject
 import javax.inject.Scope
 import kotlin.math.log2
@@ -26,17 +25,9 @@ class HeadphoneMeasurer {
     private var mMeasurerCallBack: ((freq: Int, db: Float) -> Unit)? = null
     private var mFinishCallBack: ((dbHLVolumeList: List<FloatArray>) -> Unit)? = null
     private var mVolumeDefault = 1
-
-    @Inject
-    lateinit var context: Context
+    private val context = PHApplication.instance.applicationContext
 
     var isStart = false
-
-    init {
-        DaggerHeadphoneMeasurerComponent.builder()
-                .applicationComponent(PHApplication.applicationComponent)
-                .build().inject(this)
-    }
 
     /**
      * @param side [TONE_SIDE_DEFAULT], [TONE_SIDE_LEFT], [TONE_SIDE_RIGHT]
@@ -199,13 +190,3 @@ class HeadphoneMeasurer {
         return -1f
     }
 }
-
-@HeadphoneMeasurerScope
-@Component(dependencies = [ApplicationComponent::class])
-interface HeadphoneMeasurerComponent {
-    fun inject(headphoneMeasurer: HeadphoneMeasurer)
-}
-
-@Scope
-@Retention(AnnotationRetention.RUNTIME)
-annotation class HeadphoneMeasurerScope

@@ -3,12 +3,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/menu_headphone"
+        android:id="@+id/menu_main_headphone"
         android:title="@string/headphone_data"
         android:icon="@drawable/vector_drawable_headphone"/>
 
     <item
-        android:id="@+id/menu_history"
+        android:id="@+id/menu_main_history"
         android:title="@string/history"
         android:icon="@drawable/vector_drawable_history"/>
 </menu>

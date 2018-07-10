@@ -12,9 +12,8 @@
         <ImageView
             android:id="@+id/widget_card_hint_close_iv"
             style="@style/CloseImage_BigCard"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="12dp"
             android:contentDescription="@string/close"
+            android:padding="12dp"
             android:src="@drawable/vector_drawable_clear"
             android:tint="@color/PHearing_grey"
             app:layout_constraintStart_toStartOf="parent"
@@ -25,7 +24,6 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent"

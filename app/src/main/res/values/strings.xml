@@ -33,6 +33,16 @@
 
     <string name="speech">Speech</string>
     <string name="speech_introduction">The test will test your word recognition ability, make sure you are in are quiet place and then click the button below</string>
+    <string name="speech_prepare_hint">Please adjust your volume to that you can hear the sound clearly, you can click the \n\"Say Hello\"\n button to test the sound, if you sure that your volume is enough but still can not hear anything, click the set button below to set your TTS engine to CHINESE\n\nIf you are ready, click the start button below to start the test</string>
+    <string name="speech_not_support_hint">It seems that your device\'s TTS engine not support CHINESE, click the button below to set your TTS engine, if all your TTS engine is not support CHINESE, click the link below to get the TTS engine</string>
+    <string name="speech_finish_hint">You have finished the test, If you want to start a new test click the button below, and your score is</string>
+    <string name="speech_wait_hint">Waiting for initialization to complete&#8230;</string>
+    <string name="speech_guide_hint0">The big top number shows your score</string>
+    <string name="speech_guide_hint1">The gery data area, shows what you say</string>
+    <string name="speech_guide_hint2">When you are ready for next, click the next button</string>
+    <string name="speech_guide_hint3">When your answer is right, there will show a green hint circle</string>
+    <string name="speech_guide_hint4">When your answer is wrong, there will show a red hint circle, and you will have a opportunity to refute</string>
+    <string name="speech_guide_hint5">The red hint will show 1.5 seconds, in this time, you can click the hint, and there will show 4 choices, chose the right one, that you can also get the score</string>
 
     <string name="history">History</string>
 
@@ -53,6 +63,15 @@
     <string name="disabled">Disabled</string>
     <string name="minute5">5 Minutes</string>
     <string name="search">Search</string>
+    <string name="say_hello">Say Hello</string>
+    <string name="set">Set</string>
+    <string name="next">Next</string>
+    <string name="hint">Hint</string>
+    <string name="playing">Playing&#8230;</string>
+    <string name="Recognizing">Recognizing&#8230;</string>
+    <string name="score">Score: </string>
+    <string name="test_table">Test Table: </string>
+    <string name="delete">Delete</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>

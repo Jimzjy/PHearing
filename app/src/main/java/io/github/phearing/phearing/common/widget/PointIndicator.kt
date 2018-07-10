@@ -112,7 +112,9 @@ class PointIndicator : View {
     }
 
     fun rePaint() {
+        visibility = View.GONE
         invalidate()
+        visibility = View.VISIBLE
     }
 
     fun setupWithViewPager(viewPager: ViewPager) {

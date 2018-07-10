@@ -1,23 +1,24 @@
 package io.github.phearing.phearing.ui.history
 
-import android.content.res.ColorStateList
+
+import android.accessibilityservice.AccessibilityService
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.util.Log
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.core.content.ContextCompat
+import androidx.appcompat.widget.PopupMenu
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-
 import io.github.phearing.phearing.R
 import io.github.phearing.phearing.common.HistoryRVAdapter
 import io.github.phearing.phearing.common.ViewPagerViewAdapter
 import io.github.phearing.phearing.room.audiometry.AudiometryData
+import io.github.phearing.phearing.room.speech.SpeechData
 import kotlinx.android.synthetic.main.fragment_history.view.*
+
+const val AUDIOMETRY_HISTORY = 0
+const val SPEECH_HISTORY = 1
 
 class HistoryFragment : Fragment() {
     companion object {
@@ -27,6 +28,8 @@ class HistoryFragment : Fragment() {
     private lateinit var mViewModel: HistoryViewModel
     private lateinit var mAudiometryRVAdapter: HistoryRVAdapter
     private lateinit var mSpeechRVAdapter: HistoryRVAdapter
+    private lateinit var mAudiometryRv: RecyclerView
+    private lateinit var mSpeechRv: RecyclerView
     private val mAudiometryTimeList = mutableListOf<Long>()
     private val mAudiometryResultList = mutableListOf<String>()
     private val mSpeechTimeList = mutableListOf<Long>()
@@ -46,15 +49,15 @@ class HistoryFragment : Fragment() {
         context?.let {
             mAudiometryRVAdapter = HistoryRVAdapter(it, mAudiometryTimeList, mAudiometryResultList)
             mSpeechRVAdapter = HistoryRVAdapter(it, mSpeechTimeList, mSpeechResultList)
-            val audiometryDataRV = RecyclerView(it)
-            val speechDataRV = RecyclerView(it)
-            audiometryDataRV.adapter = mAudiometryRVAdapter
-            speechDataRV.adapter = mSpeechRVAdapter
-            audiometryDataRV.layoutManager = LinearLayoutManager(it)
-            speechDataRV.layoutManager = LinearLayoutManager(it)
+            mAudiometryRv = RecyclerView(it)
+            mSpeechRv = RecyclerView(it)
+            mAudiometryRv.adapter = mAudiometryRVAdapter
+            mSpeechRv.adapter = mSpeechRVAdapter
+            mAudiometryRv.layoutManager = LinearLayoutManager(it)
+            mSpeechRv.layoutManager = LinearLayoutManager(it)
 
-            viewPagerAdapter.addView(audiometryDataRV, resources.getString(R.string.audiometry))
-            viewPagerAdapter.addView(speechDataRV, resources.getString(R.string.speech))
+            viewPagerAdapter.addView(mAudiometryRv, resources.getString(R.string.audiometry))
+            viewPagerAdapter.addView(mSpeechRv, resources.getString(R.string.speech))
         }
 
         view?.let {
@@ -68,6 +71,9 @@ class HistoryFragment : Fragment() {
     private fun init() {
         mViewModel.audiometryData.observe(this, Observer {
             it?.let { setAudiometryDataList(it) }
+        })
+        mViewModel.speechData.observe(this, Observer {
+            it?.let { setSpeechData(it) }
         })
 
         mAudiometryRVAdapter.setOnClickCallback {
@@ -83,8 +89,12 @@ class HistoryFragment : Fragment() {
                 (activity as HistoryActivity).navigateTo(AMContentFragment.newInstance(right, left))
             }
         }
-        mSpeechRVAdapter.setOnClickCallback {
+        mAudiometryRVAdapter.setOnLongClickCallback {
+            showPopupMenu(it, AUDIOMETRY_HISTORY)
+        }
 
+        mSpeechRVAdapter.setOnLongClickCallback {
+            showPopupMenu(it, SPEECH_HISTORY)
         }
     }
 
@@ -96,5 +106,56 @@ class HistoryFragment : Fragment() {
             mAudiometryResultList.add("L:${it.leftResult} R:${it.rightResult}")
         }
         mAudiometryRVAdapter.notifyDataSetChanged()
+    }
+
+    private fun setSpeechData(data: List<SpeechData>) {
+        mSpeechTimeList.clear()
+        mSpeechResultList.clear()
+
+        val scoreText = resources.getString(R.string.score)
+        val tableText = resources.getString(R.string.test_table)
+        data.forEach {
+            mSpeechTimeList.add(it.createTime)
+            mSpeechResultList.add("$scoreText${it.score}  $tableText${it.tableNo}")
+        }
+        mSpeechRVAdapter.notifyDataSetChanged()
+    }
+
+    private fun showPopupMenu(position: Int, flag: Int) {
+        context?.let {
+            val popupMenu: PopupMenu
+            val wrapper = ContextThemeWrapper(it, R.style.Widget_PHearing_PopupMenu)
+
+            when(flag) {
+                AUDIOMETRY_HISTORY -> {
+                    popupMenu = PopupMenu(wrapper, mAudiometryRv.getChildAt(position))
+                    popupMenu.menuInflater.inflate(R.menu.menu_history_auiometry, popupMenu.menu)
+
+                    popupMenu.setOnMenuItemClickListener {
+                        when(it.itemId) {
+                            R.id.menu_history_audiometry_delete -> {
+                                mViewModel.deleteAudiometryData(position)
+                            }
+                        }
+                        true
+                    }
+                    popupMenu.show()
+                }
+                SPEECH_HISTORY -> {
+                    popupMenu = PopupMenu(wrapper, mSpeechRv.getChildAt(position))
+                    popupMenu.menuInflater.inflate(R.menu.menu_history_speech, popupMenu.menu)
+
+                    popupMenu.setOnMenuItemClickListener {
+                        when(it.itemId) {
+                            R.id.menu_history_speech_delete -> {
+                                mViewModel.deleteSpeechDate(position)
+                            }
+                        }
+                        true
+                    }
+                    popupMenu.show()
+                }
+            }
+        }
     }
 }

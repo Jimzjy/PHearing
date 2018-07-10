@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.speech.SpeechActivity">
+    tools:context=".ui.speech.SpeechActivity"
+    style="@style/BaseLayout">
 
     <androidx.appcompat.widget.Toolbar
         style="@style/Widget.PHearing.ToolBar"

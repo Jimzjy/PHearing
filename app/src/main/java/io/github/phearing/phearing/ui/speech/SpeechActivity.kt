@@ -13,7 +13,7 @@ class SpeechActivity : AppCompatActivity() {
         setContentView(R.layout.activity_speech)
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                    .replace(R.id.speech_container, SpeechTest.newInstance())
+                    .replace(R.id.speech_container, SpeechFragment.newInstance())
                     .commitNow()
         }
         setSupportActionBar(speech_toolbar)

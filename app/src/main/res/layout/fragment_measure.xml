@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:background="@color/colorPrimary">
+        android:background="?attr/colorPrimary">
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/measure_data_cv"

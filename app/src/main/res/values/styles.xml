@@ -30,8 +30,8 @@
     </style>
 
     <style name="CloseImage_BigCard">
-        <item name="android:layout_width">24dp</item>
-        <item name="android:layout_height">24dp</item>
+        <item name="android:layout_width">48dp</item>
+        <item name="android:layout_height">48dp</item>
         <item name="android:src">@drawable/vector_drawable_clear</item>
         <item name="android:tint">@color/PHearing_grey</item>
     </style>
@@ -94,6 +94,10 @@
         <item name="tabIndicatorFullWidth">false</item>
         <item name="tabSelectedTextColor">@color/PHearing_white</item>
         <item name="tabIndicatorColor">@color/PHearing_white</item>
+    </style>
+
+    <style name="Widget.PHearing.PopupMenu" parent="Base.Widget.AppCompat.Light.PopupMenu">
+        <item name="android:textColorPrimary">@color/PHearing_text_grey</item>
     </style>
 
     <style name="TextAppearance.PHearing.DataText" parent="TextAppearance.MaterialComponents.Body1">

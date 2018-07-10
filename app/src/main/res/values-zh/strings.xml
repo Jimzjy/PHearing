@@ -48,4 +48,23 @@
     <string name="speech_introduction">此测试会测试您的言语识别率, 确保您在一个安静的环境下然后点击下方按钮开始测试</string>
     <string name="search">搜索</string>
     <string name="headphone_data">耳机信息</string>
+    <string name="speech_prepare_hint">请调整你的音量至可以清楚听见发出的声音, 点击下面的\n\"说 你好\"\n按钮来测试声音\n\n如果你准备好了, 点击下面的开始按钮来开始测试</string>
+    <string name="speech_not_support_hint">看起来您设备当前的 TTS 引擎不支持中文, 点击下面的设置按钮来设置您的 TTS 引擎, 如果您所有的 TTS 引擎都不支持中文, 点击下面的链接来下载 TTS 引擎</string>
+    <string name="say_hello">说 你好</string>
+    <string name="set">设置</string>
+    <string name="speech_finish_hint">您已经完成了测试, 如果您想要开始一个新的测试, 点击下方按钮, 本次测试您的分数是</string>
+    <string name="speech_wait_hint">等待初始化完成&#8230;</string>
+    <string name="next">下一个</string>
+    <string name="hint">提示</string>
+    <string name="speech_guide_hint0">顶部的数字显示您的分数</string>
+    <string name="speech_guide_hint1">灰色区域显示您说的词语</string>
+    <string name="speech_guide_hint2">当您准备好测试下一个词时, 点击下一个按钮</string>
+    <string name="speech_guide_hint3">当你的答案正确, 会显示一个绿色的圆形提示</string>
+    <string name="speech_guide_hint4">当你的答案错误, 会显示一个红色的圆形文字, 但是你还有一次反驳的机会</string>
+    <string name="speech_guide_hint5">红色的提示会显示 1.5 秒, 在这段时间里, 你可以点击这个提示圆, 会出现 4 个选项, 选择你之前听到的, 如果选择正确, 分数会增加</string>
+    <string name="playing">播放中&#8230;</string>
+    <string name="Recognizing">识别中&#8230;</string>
+    <string name="score">"分数: "</string>
+    <string name="test_table">"测试表: "</string>
+    <string name="delete">删除</string>
 </resources>

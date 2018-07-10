@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_margin="8dp"
+    android:padding="8dp"
+    android:background="@drawable/round_corner_ripple_primary">
+
+    <TextView
+        android:id="@+id/item_speech_choice_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="@color/PHearing_white"
+        android:textSize="18sp"
+        tools:text="111"/>
+</FrameLayout>

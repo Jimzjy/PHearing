@@ -3,9 +3,12 @@ package io.github.phearing.phearing.ui.audiometry
 import android.app.Application
 import android.app.Service
 import android.media.AudioManager
+import android.util.Log
 import androidx.lifecycle.*
+import dagger.Component
 import io.github.phearing.phearing.R
-import io.github.phearing.phearing.common.application.PHApplication
+import io.github.phearing.phearing.common.ApplicationComponent
+import io.github.phearing.phearing.common.PHApplication
 import io.github.phearing.phearing.common.audio.TONE_SIDE_LEFT
 import io.github.phearing.phearing.common.audio.TONE_SIDE_RIGHT
 import io.github.phearing.phearing.common.audio.Tone
@@ -14,6 +17,8 @@ import io.github.phearing.phearing.room.audiometry.AudiometryDataRepo
 import io.github.phearing.phearing.room.headphone.Headphone
 import io.github.phearing.phearing.room.headphone.HeadphoneRepo
 import java.util.*
+import javax.inject.Inject
+import javax.inject.Scope
 import kotlin.math.abs
 import kotlin.math.log2
 
@@ -28,13 +33,18 @@ const val AUDIOMETRY_PREPARE = 1
 const val AUDIOMETRY_FINISH = 2
 
 class AudiometryViewModel(application: Application) : AndroidViewModel(application) {
+    @Inject
+    lateinit var headphoneRepo: HeadphoneRepo
+    @Inject
+    lateinit var audiometryDataRepo: AudiometryDataRepo
+
+    val allHeadphones: LiveData<List<Headphone>>
     val dataText = MutableLiveData<String>()
     val state = MutableLiveData<Int>()
     val isHintOpen = MutableLiveData<Boolean>()
     val pointList = MutableLiveData<List<Float>>()
     val xPointList = MutableLiveData<List<Float>>()
     val startPlayAnimation = MutableLiveData<Int>()
-    val allHeadphones: LiveData<List<Headphone>> = HeadphoneRepo().allHeadphones
 
     var headphone = MutableLiveData<Headphone>()
     var rightVolumeDBHL = mutableListOf<FloatArray>()
@@ -55,7 +65,6 @@ class AudiometryViewModel(application: Application) : AndroidViewModel(applicati
     private val mPointList = mutableListOf<Float>()
     // left
     private val mXPointList = mutableListOf<Float>()
-    private val mAudiometryDataRepo by lazy { AudiometryDataRepo() }
 
     init {
         state.value = AUDIOMETRY_PREPARE
@@ -64,6 +73,12 @@ class AudiometryViewModel(application: Application) : AndroidViewModel(applicati
         pointList.value = mutableListOf()
         xPointList.value = mutableListOf()
         startPlayAnimation.value = 0
+
+        DaggerAudiometryViewModelComponent.builder()
+                .applicationComponent(PHApplication.applicationComponent)
+                .build().inject(this)
+
+        allHeadphones = headphoneRepo.allHeadphones
     }
 
     fun startTest() {
@@ -213,7 +228,7 @@ class AudiometryViewModel(application: Application) : AndroidViewModel(applicati
     }
 
     private fun insertAudiometryData() {
-        mAudiometryDataRepo.insertAudiometryData(AudiometryData(Date().time,
+        audiometryDataRepo.insertAudiometryData(AudiometryData(Date().time,
                 mPointList.joinToString("|"),
                 mXPointList.joinToString("|"),
                 rightLevel, leftLevel))
@@ -300,3 +315,13 @@ class AudiometryViewModel(application: Application) : AndroidViewModel(applicati
         return total / (pointList.size / 2)
     }
 }
+
+@AudiometryScope
+@Component(dependencies = [ApplicationComponent::class])
+interface AudiometryViewModelComponent {
+    fun inject(audiometryViewModel: AudiometryViewModel)
+}
+
+@Scope
+@Retention(AnnotationRetention.RUNTIME)
+annotation class AudiometryScope

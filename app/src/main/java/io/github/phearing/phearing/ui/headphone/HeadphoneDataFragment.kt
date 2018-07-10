@@ -2,11 +2,12 @@ package io.github.phearing.phearing.ui.headphone
 
 
 import android.os.Bundle
-import android.util.Log
+import android.view.ContextThemeWrapper
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.PopupMenu
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -40,9 +41,25 @@ class HeadphoneDataFragment : Fragment() {
             val ctx = it
             mRVAdapter = WidgetListDialogRVAdapter(ctx, mHeadphoneList)
             view?.let {
+                val tmpView = it
                 it.headphone_data_rv.layoutManager = LinearLayoutManager(ctx)
                 it.headphone_data_rv.adapter = mRVAdapter
                 it.headphone_data_rv.setHasFixedSize(true)
+                mRVAdapter.setOnLongClickCallback {
+                    val position = it
+                    val popupMenu = PopupMenu(ContextThemeWrapper(ctx, R.style.Widget_PHearing_PopupMenu),
+                            tmpView.headphone_data_rv.getChildAt(position))
+                    popupMenu.menuInflater.inflate(R.menu.menu_headphone_data, popupMenu.menu)
+                    popupMenu.setOnMenuItemClickListener {
+                        when(it.itemId) {
+                            R.id.menu_headphone_delete -> {
+                                mViewModel.deleteHeadphone(position)
+                            }
+                        }
+                        true
+                    }
+                    popupMenu.show()
+                }
 
                 it.headphone_data_fab.setOnClickListener {
                     (activity as HeadphoneActivity).navigateTo(MeasureFragment.newInstance())

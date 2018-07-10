@@ -1,15 +1,9 @@
 package io.github.phearing.phearing.room.headphone
 
-import android.content.Context
 import android.os.AsyncTask
 import androidx.lifecycle.LiveData
 import androidx.room.Room
-import dagger.Component
-import dagger.Module
-import dagger.Provides
-import io.github.phearing.phearing.common.application.ApplicationComponent
-import io.github.phearing.phearing.common.application.PHApplication
-import javax.inject.Inject
+import io.github.phearing.phearing.common.PHApplication
 import javax.inject.Scope
 
 const val DELETE_FLAG = 0
@@ -17,17 +11,11 @@ const val INSERT_FLAG = 1
 const val UPDATE_FLAG = 2
 
 class HeadphoneRepo {
-    @Inject
-    lateinit var headphoneDao: HeadphoneDao
+    private val headphoneDao: HeadphoneDao = Room.databaseBuilder(PHApplication.instance.applicationContext,
+            HeadphoneDatabase::class.java, "headphone_database")
+            .build().headphoneDao()
     val allHeadphones: LiveData<List<Headphone>> by lazy {
         headphoneDao.loadAll()
-    }
-
-    init {
-        DaggerHeadphoneRepoComponent.builder()
-                .applicationComponent(PHApplication.applicationComponent)
-                .headphoneRepoModule(HeadphoneRepoModule())
-                .build().inject(this)
     }
 
     fun insertHeadphones(vararg headphones: Headphone) {
@@ -55,25 +43,4 @@ class HeadphoneRepo {
             }
         }
     }
-}
-
-@Scope
-@Retention(AnnotationRetention.RUNTIME)
-annotation class HeadphoneRepoScope
-
-@Module
-class HeadphoneRepoModule {
-    @Provides
-    @HeadphoneRepoScope
-    fun provideDao(context: Context): HeadphoneDao {
-        return Room.databaseBuilder(context.applicationContext,
-                HeadphoneDatabase::class.java, "headphone_database")
-                .build().headphoneDao()
-    }
-}
-
-@HeadphoneRepoScope
-@Component(modules = [HeadphoneRepoModule::class], dependencies = [ApplicationComponent::class])
-interface HeadphoneRepoComponent {
-    fun inject(headphoneRepo: HeadphoneRepo)
 }

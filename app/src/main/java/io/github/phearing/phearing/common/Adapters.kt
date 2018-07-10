@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.PagerAdapter
 import io.github.phearing.phearing.R
 import io.github.phearing.phearing.room.headphone.Headphone
+import kotlinx.android.synthetic.main.item_speech_choice.view.*
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -48,6 +49,7 @@ class WidgetCardHintRVAdapter(context: Context, private val mContainerList: List
 class WidgetListDialogRVAdapter(context: Context, private val mHeadphoneList: List<Headphone>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val mInflater = LayoutInflater.from(context)
     private var mClickCallback: ((position: Int) -> Unit)? = null
+    private var mLongClickCallback: ((position: Int) -> Unit)? = null
 
     inner class ViewHolder(root: View) : RecyclerView.ViewHolder(root) {
         val name: TextView = root.findViewById(R.id.widget_list_dialog_item_tv)
@@ -55,6 +57,10 @@ class WidgetListDialogRVAdapter(context: Context, private val mHeadphoneList: Li
         init {
             root.setOnClickListener {
                 mClickCallback?.invoke(adapterPosition)
+            }
+            root.setOnLongClickListener {
+                mLongClickCallback?.invoke(adapterPosition)
+                true
             }
         }
     }
@@ -75,11 +81,16 @@ class WidgetListDialogRVAdapter(context: Context, private val mHeadphoneList: Li
     fun setOnClickCallback(callback: (position: Int) -> Unit) {
         mClickCallback = callback
     }
+
+    fun setOnLongClickCallback(callback: (position: Int) -> Unit) {
+        mLongClickCallback = callback
+    }
 }
 
 class HistoryRVAdapter(context: Context, private val mHistoryTimeList: List<Long>, private val mHistoryDataList: List<String>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val mInflater = LayoutInflater.from(context)
     private var mClickCallback: ((position: Int) -> Unit)? = null
+    private var mLongClickCallback: ((position: Int) -> Unit)? = null
 
     inner class ViewHolder(root: View) : RecyclerView.ViewHolder(root) {
         val time: TextView = root.findViewById(R.id.item_history_time_tv)
@@ -88,6 +99,10 @@ class HistoryRVAdapter(context: Context, private val mHistoryTimeList: List<Long
         init {
             root.setOnClickListener {
                 mClickCallback?.invoke(adapterPosition)
+            }
+            root.setOnLongClickListener {
+                mLongClickCallback?.invoke(adapterPosition)
+                true
             }
         }
     }
@@ -108,6 +123,10 @@ class HistoryRVAdapter(context: Context, private val mHistoryTimeList: List<Long
 
     fun setOnClickCallback(callback: (position: Int) -> Unit) {
         mClickCallback = callback
+    }
+
+    fun setOnLongClickCallback(callback: (position: Int) -> Unit) {
+        mLongClickCallback = callback
     }
 }
 
@@ -176,6 +195,39 @@ class NewsDataRVAdapter(context: Context, private val mDataList: List<NewsData>)
         } else {
             viewHolder.imageView.visibility = View.GONE
         }
+    }
+
+    fun setOnClickCallback(callback: (position: Int) -> Unit) {
+        mClickCallback = callback
+    }
+}
+
+class SpeechChoiceRVAdapter(context: Context, private val mChoiceList: List<String>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+    private val mInflater = LayoutInflater.from(context)
+    private var mClickCallback: ((position: Int) -> Unit)? = null
+
+    inner class ViewHolder(root: View) : RecyclerView.ViewHolder(root) {
+        val text: TextView = root.item_speech_choice_tv
+
+        init {
+            root.setOnClickListener {
+                mClickCallback?.invoke(adapterPosition)
+            }
+        }
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        return ViewHolder(mInflater.inflate(R.layout.item_speech_choice, parent, false))
+    }
+
+    override fun getItemCount(): Int {
+        return mChoiceList.size
+    }
+
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        val viewHolder = holder as ViewHolder
+
+        viewHolder.text.text = mChoiceList[position]
     }
 
     fun setOnClickCallback(callback: (position: Int) -> Unit) {

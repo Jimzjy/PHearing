@@ -8,32 +8,32 @@
     android:padding="@dimen/hint_content_padding">
 
     <TextView
-        android:id="@+id/hint_measure3_tv0"
+        android:id="@+id/hint_speech2_tv0"
         style="@style/Widget.PHearing.HintTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:text="@string/measure_finish_hint"
+        android:text="@string/speech_finish_hint"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/hint_measure3_iv"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="16dp"
-        android:contentDescription="@string/add"
-        android:src="@drawable/vector_drawable_add_circle"
-        android:tint="?attr/colorPrimary"
+    <TextView
+        android:id="@+id/hint_speech2_score_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:textSize="64sp"
+        android:textColor="?attr/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/hint_measure3_tv0" />
+        app:layout_constraintTop_toBottomOf="@+id/hint_speech2_tv0"
+        tools:text="90" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/hint_measure3_bt"
+        android:id="@+id/hint_speech2_start_bt"
         style="@style/Widget.PHearing.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -41,5 +41,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/hint_measure3_iv" />
+        app:layout_constraintTop_toBottomOf="@+id/hint_speech2_score_tv" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.speech.SpeechFragment">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="io.github.phearing.phearing.ui.speech.SpeechViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:background="@color/colorPrimary">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/speech_display_card"
+            style="@style/Widget.PHearing.CardView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/speech_score_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center"
+                    android:text="@{viewModel.scoreText, default=0}"
+                    android:textSize="64sp"
+                    app:layout_constraintBottom_toTopOf="@+id/speech_choice_rv"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/speech_choice_rv"
+                    android:layout_width="match_parent"
+                    android:layout_height="128dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:padding="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:itemCount="2"
+                    tools:listitem="@layout/item_speech_choice" />
+
+                <TextView
+                    android:id="@+id/speech_hyp_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="128dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/round_corner_background_light_grey"
+                    android:gravity="center"
+                    android:text="@{viewModel.hypText}"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/speech_true_iv"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:alpha="0"
+                    android:background="@drawable/oval_background_green"
+                    android:padding="16dp"
+                    android:src="@drawable/vector_drawable_check"
+                    app:layout_constraintBottom_toTopOf="@+id/speech_next_bt"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/speech_hyp_tv"
+                    tools:ignore="contentDescription" />
+
+                <ImageView
+                    android:id="@+id/speech_false_iv"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:visibility="invisible"
+                    android:background="@drawable/oval_background_red"
+                    android:padding="16dp"
+                    android:src="@drawable/vector_drawable_clear"
+                    app:layout_constraintBottom_toTopOf="@+id/speech_next_bt"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/speech_hyp_tv"
+                    tools:ignore="contentDescription" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/speech_next_bt"
+                    style="@style/Widget.PHearing.Button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/next"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/speech_false_iv" />
+
+                <ImageView
+                    android:id="@+id/speech_hint_bt"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:contentDescription="@string/hint"
+                    android:src="@drawable/vector_drawable_hint"
+                    android:tint="?attr/colorPrimary"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/speech_count_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.countText}"
+                    tools:text="0 / 25"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/speech_hint_bt"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/speech_hint_bt"
+                    tools:ignore="HardcodedText" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <io.github.phearing.phearing.common.widget.HintCard
+            android:id="@+id/speech_hint_card"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

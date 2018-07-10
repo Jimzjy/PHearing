@@ -38,10 +38,10 @@ class MainActivity : AppCompatActivity() {
         main_navigation_view.setNavigationItemSelectedListener {
             //main_drawer_layout.closeDrawers()
             when(it.itemId) {
-                R.id.menu_headphone -> {
+                R.id.menu_main_headphone -> {
                     startActivity(Intent(this@MainActivity, HeadphoneActivity::class.java))
                 }
-                R.id.menu_history -> {
+                R.id.menu_main_history -> {
                     startActivity(Intent(this@MainActivity, HistoryActivity::class.java))
                 }
             }

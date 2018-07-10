@@ -11,5 +11,7 @@
     <color name="positionLineColor">#BDBDBD</color>
     <color name="PHearing_white">#FAFAFA</color>
     <color name="PHearing_grey">#B0BEC5</color>
+    <color name="PHearing_green">#00E676</color>
+    <color name="PHearing_red">#F50057</color>
     <color name="PHearing_text_grey">@android:color/tertiary_text_light</color>
 </resources>

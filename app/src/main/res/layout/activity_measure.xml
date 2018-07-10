@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.headphone.HeadphoneActivity"
-    style="@style/BaseLayout">
+    tools:context=".ui.headphone.HeadphoneActivity">
 
     <androidx.appcompat.widget.Toolbar
         style="@style/Widget.PHearing.ToolBar"

@@ -3,13 +3,18 @@ package io.github.phearing.phearing.ui.headphone
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
+import dagger.Component
 import io.github.phearing.phearing.R
+import io.github.phearing.phearing.common.ApplicationComponent
+import io.github.phearing.phearing.common.PHApplication
 import io.github.phearing.phearing.common.audio.HeadphoneMeasurer
 import io.github.phearing.phearing.common.audio.TONE_SIDE_LEFT
 import io.github.phearing.phearing.common.audio.TONE_SIDE_RIGHT
 import io.github.phearing.phearing.room.headphone.Headphone
 import io.github.phearing.phearing.room.headphone.HeadphoneRepo
 import java.util.*
+import javax.inject.Inject
+import javax.inject.Scope
 
 const val MEASURE_START = 0
 const val MEASURE_PREPARE = 1
@@ -26,15 +31,21 @@ class MeasureViewModel(application: Application) : AndroidViewModel(application)
     val minDbListLeft = MutableLiveData<FloatArray>()
     val maxDbListLeft = MutableLiveData<FloatArray>()
 
+    @Inject
+    lateinit var headphoneRepo: HeadphoneRepo
+
     private var mHpMeasurer: HeadphoneMeasurer? = null
     private var mDbHLVolume = arrayOf("", "")
-    private val mHeadphoneRepo: HeadphoneRepo by lazy { HeadphoneRepo() }
     private var mSide = TONE_SIDE_RIGHT
 
     init {
         dataText.value = getDataFormatText(0, 0f)
         state.value = MEASURE_PREPARE
         isHintOpen.value = true
+
+        DaggerMeasureViewModelComponent.builder()
+                .applicationComponent(PHApplication.applicationComponent)
+                .build().inject(this)
     }
 
     fun startMeasure() {
@@ -55,7 +66,7 @@ class MeasureViewModel(application: Application) : AndroidViewModel(application)
 
     fun insertHeadphoneData(name: String): Boolean {
         return if (mDbHLVolume[0].isNotEmpty() && mDbHLVolume[1].isNotEmpty()) {
-            mHeadphoneRepo.insertHeadphones(Headphone(name, mDbHLVolume[1], mDbHLVolume[0], Date().time))
+            headphoneRepo.insertHeadphones(Headphone(name, mDbHLVolume[1], mDbHLVolume[0], Date().time))
             true
         } else {
             false
@@ -140,3 +151,13 @@ class MeasureViewModel(application: Application) : AndroidViewModel(application)
         }
     }
 }
+
+@MeasureScope
+@Component(dependencies = [ApplicationComponent::class])
+interface MeasureViewModelComponent {
+    fun inject(measureViewModel: MeasureViewModel)
+}
+
+@Scope
+@Retention(AnnotationRetention.RUNTIME)
+annotation class MeasureScope
