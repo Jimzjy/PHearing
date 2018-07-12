@@ -7,6 +7,7 @@ import io.github.phearing.phearing.R
 import kotlinx.android.synthetic.main.activity_auth.*
 
 class AuthActivity : AppCompatActivity() {
+    private var isLogin = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -15,9 +16,15 @@ class AuthActivity : AppCompatActivity() {
         auth_toolbar.setNavigationOnClickListener { onBackPressed() }
 
         if (savedInstanceState == null) {
-            supportFragmentManager.beginTransaction()
-                    .replace(R.id.auth_container, LoginFragment.newInstance())
-                    .commitNow()
+            if (!isLogin) {
+                supportFragmentManager.beginTransaction()
+                        .replace(R.id.auth_container, LoginFragment.newInstance())
+                        .commitNow()
+            } else {
+                supportFragmentManager.beginTransaction()
+                        .replace(R.id.auth_container, UserFragment.newInstance())
+                        .commitNow()
+            }
         }
     }
 

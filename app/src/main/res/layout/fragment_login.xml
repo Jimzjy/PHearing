@@ -1,90 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.auth.LoginFragment">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <data>
+        <variable
+            name="viewModel"
+            type="io.github.phearing.phearing.ui.auth.LoginViewModel" />
+    </data>
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         tools:context=".ui.auth.LoginFragment">
 
-        <ImageView
-            android:id="@+id/auth_login_logo"
-            android:layout_width="192dp"
-            android:layout_height="192dp"
-            android:layout_marginTop="32dp"
-            android:padding="24dp"
-            android:src="@drawable/vector_drawable_sun"
-            android:tint="?attr/colorPrimary"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="contentDescription" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/auth_login_username_til"
-            style="@style/Widget.PHearing.TextInputLayout"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/auth_login_logo">
+            tools:context=".ui.auth.LoginFragment">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/auth_login_username_et"
-                style="@style/Widget.PHearing.TextInputEditText"
+            <ImageView
+                android:id="@+id/auth_login_logo"
+                android:layout_width="192dp"
+                android:layout_height="192dp"
+                android:layout_marginTop="32dp"
+                android:padding="24dp"
+                android:src="@drawable/vector_drawable_sun"
+                android:tint="?attr/colorPrimary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="contentDescription" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/auth_login_username_til"
+                style="@style/Widget.PHearing.TextInputLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/username" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="16dp"
+                app:errorEnabled="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/auth_login_logo">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/auth_login_password_til"
-            style="@style/Widget.PHearing.TextInputLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/auth_login_username_til">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/auth_login_username_et"
+                    style="@style/Widget.PHearing.TextInputEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/username"
+                    android:text="@={viewModel.username}"
+                    android:inputType="text" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/auth_login_password_et"
-                style="@style/Widget.PHearing.TextInputEditText"
-                android:hint="@string/password"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/auth_login_password_til"
+                style="@style/Widget.PHearing.TextInputLayout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                app:passwordToggleEnabled="true"
+                app:errorEnabled="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/auth_login_username_til">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/auth_login_login_bt"
-            style="@style/Widget.PHearing.Button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
-            android:text="@string/auth_login"
-            app:backgroundTint="?attr/colorPrimary"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/auth_login_password_til" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/auth_login_password_et"
+                    style="@style/Widget.PHearing.TextInputEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/password"
+                    android:text="@={viewModel.password}"
+                    android:inputType="textPassword" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/auth_login_register_bt"
-            style="@style/Widget.PHearing.TextButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:text="@string/auth_register"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/auth_login_password_til" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/auth_login_login_bt"
+                style="@style/Widget.PHearing.Button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:text="@string/auth_login"
+                app:backgroundTint="?attr/colorPrimary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/auth_login_password_til" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/auth_login_register_bt"
+                style="@style/Widget.PHearing.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/auth_register"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/auth_login_password_til" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>

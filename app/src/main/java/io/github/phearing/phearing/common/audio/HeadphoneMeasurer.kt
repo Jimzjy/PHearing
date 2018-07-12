@@ -65,7 +65,7 @@ class HeadphoneMeasurer {
                         mTone?.play(freq)
                         Thread.sleep(100)
                         mRecorder?.let {
-                            val db = it.getDb()
+                            val db = it.getDb() + micOffset
                             handler.post {
                                 try {
                                     mMeasurerCallBack?.invoke(freq, db)
@@ -73,7 +73,7 @@ class HeadphoneMeasurer {
                                     e.printStackTrace()
                                 }
                             }
-                            dbList.add(db + micOffset)
+                            dbList.add(db)
                         }
                         volume += 1
                     }

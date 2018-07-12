@@ -51,6 +51,17 @@
 
     <string name="auth_login">Login</string>
     <string name="auth_register">Register</string>
+    <string name="auth_sign_out">Sign Out</string>
+    <string name="auth_sex">Sex: </string>
+    <string name="auth_male">Male</string>
+    <string name="auth_female">Female</string>
+    <string name="auth_deaf">Deaf: </string>
+    <string name="auth_hearing_aid">Hearing Aid: </string>
+    <string name="auth_cochlear_implant">Cochlear Implant: </string>
+    <string name="auth_password_empty">Password can not be empty</string>
+    <string name="auth_username_empty">Username can not be empty</string>
+    <string name="auth_inconsistent_password">Inconsistent password</string>
+    <string name="auth_birth_empty">Birth year can not be empty</string>
 
     <string name="ph_start">Start</string>
     <string name="ph_stop">Stop</string>
@@ -79,7 +90,10 @@
     <string name="avatar">Avatar</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
+    <string name="password_re_enter">Re-enter Password</string>
     <string name="adjust">Adjust</string>
+    <string name="birth_year">Birth Year</string>
+    <string name="data">Data</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>

@@ -80,7 +80,7 @@
     </style>
 
     <style name="Widget.PHearing.TextInputEditText" parent="Widget.MaterialComponents.TextInputEditText.OutlinedBox">
-        <item name="android:textColor">?attr/colorPrimary</item>
+        <item name="android:textColor">@color/PHearing_text_grey</item>
     </style>
 
     <style name="Widget.PHearing.HintTextView" parent="android:Widget.TextView">

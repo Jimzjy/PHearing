@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity() {
             true
         }
         main_navigation_view.getHeaderView(0).main_username_tv.text = "JC"
-        main_navigation_view.getHeaderView(0).main_username_tv.setOnClickListener {
+        main_navigation_view.getHeaderView(0).setOnClickListener {
             startActivity(Intent(this@MainActivity, AuthActivity::class.java))
         }
 

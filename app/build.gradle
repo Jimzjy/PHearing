@@ -41,6 +41,8 @@ dependencies {
     implementation "com.google.dagger:dagger:$dagger_version"
     implementation 'androidx.legacy:legacy-support-v4:1.0.0-beta01'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0-beta01'
+    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+    implementation 'com.gcssloop.widget:rclayout:1.6.0'
     testImplementation 'junit:junit:4.12'
     testImplementation "androidx.room:room-testing:$room_version"
     androidTestImplementation 'androidx.test:runner:1.1.0-alpha3'

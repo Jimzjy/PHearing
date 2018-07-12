@@ -74,4 +74,18 @@
     <string name="password">密码</string>
     <string name="measure_adjust_mic_hint">您可以在下方调整您的麦克风的偏差值, 默认值为 +10</string>
     <string name="adjust">调整</string>
+    <string name="password_re_enter">重新输入密码</string>
+    <string name="birth_year">出生年份</string>
+    <string name="auth_sex">"性别: "</string>
+    <string name="auth_male">男</string>
+    <string name="auth_female">女</string>
+    <string name="auth_deaf">"是否患有耳聋: "</string>
+    <string name="auth_hearing_aid">"是否佩戴助听器: "</string>
+    <string name="auth_cochlear_implant">"是否植入人工耳蜗: "</string>
+    <string name="auth_password_empty">密码不能为空</string>
+    <string name="auth_username_empty">用户名不能为空</string>
+    <string name="auth_inconsistent_password">密码不一致</string>
+    <string name="auth_birth_empty">出生年份不能为空</string>
+    <string name="data">信息</string>
+    <string name="auth_sign_out">退出登陆</string>
 </resources>
