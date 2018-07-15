@@ -1,0 +1,116 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColorPrimary">@color/textColorPrimary</item>
+    </style>
+
+    <style name="LineChart">
+        <item name="axisTextColor">@color/axisTextColor</item>
+        <item name="positionLineColor">@color/positionLineColor</item>
+        <item name="pointColor">?attr/colorPrimary</item>
+        <item name="xPointColor">?attr/colorAccent</item>
+    </style>
+
+    <style name="CurveChart">
+        <item name="c_axisTextColor">@color/axisTextColor</item>
+        <item name="c_positionLineColor">@color/positionLineColor</item>
+    </style>
+
+    <style name="PointIndicator">
+        <item name="indicatorMainPointColor">?attr/colorPrimary</item>
+        <item name="indicatorOtherPointColor">@color/PHearing_grey</item>
+    </style>
+
+    <style name="BaseLayout">
+        <item name="android:background">?attr/colorPrimary</item>
+    </style>
+
+    <style name="CloseImage_BigCard">
+        <item name="android:layout_width">48dp</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:src">@drawable/vector_drawable_clear</item>
+        <item name="android:tint">@color/PHearing_grey</item>
+    </style>
+
+    <style name="ControlImage">
+        <item name="android:layout_width">48dp</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:background">@drawable/primary_ripple</item>
+    </style>
+
+    <style name="AppBar_Icon">
+        <item name="android:layout_width">@dimen/app_bar_icon_size</item>
+        <item name="android:layout_height">@dimen/app_bar_icon_size</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:background">@drawable/primary_ripple</item>
+    </style>
+
+    <style name="Widget.PHearing.ToolBar" parent="Widget.AppCompat.Toolbar">
+        <item name="android:background">?attr/colorPrimary</item>
+        <item name="contentInsetStart">0dp</item>
+    </style>
+
+    <style name="Widget.PHearing.Button" parent="Widget.MaterialComponents.Button">
+        <item name="android:textAppearance">@style/TextAppearance.PHearing.Button</item>
+    </style>
+
+    <style name="Widget.PHearing.TextButton" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:textAppearance">@style/TextAppearance.PHearing.Button</item>
+        <item name="android:textColor">?attr/colorPrimary</item>
+    </style>
+
+    <style name="Widget.PHearing.CardView" parent="Widget.MaterialComponents.CardView">
+        <item name="cardCornerRadius">10dp</item>
+    </style>
+
+    <style name="Widget.PHearing.LightCardView" parent="Widget.MaterialComponents.CardView">
+        <item name="cardCornerRadius">10dp</item>
+        <item name="cardBackgroundColor">@color/colorPrimaryLight</item>
+    </style>
+
+    <style name="Widget.PHearing.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="hintTextAppearance">@style/TextAppearance.PHearing.TextInputLayout.HintText</item>
+        <item name="boxStrokeColor">?attr/colorPrimary</item>
+        <item name="android:paddingBottom">8dp</item>
+    </style>
+
+    <style name="Widget.PHearing.TextInputEditText" parent="Widget.MaterialComponents.TextInputEditText.OutlinedBox">
+        <item name="android:textColor">@color/PHearing_text_grey</item>
+    </style>
+
+    <style name="Widget.PHearing.HintTextView" parent="android:Widget.TextView">
+        <item name="android:textSize">18sp</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="Widget.PHearing.TabLayout" parent="Widget.MaterialComponents.TabLayout">
+        <item name="android:background">?attr/colorPrimary</item>
+        <item name="android:paddingBottom">4dp</item>
+        <item name="tabIndicatorFullWidth">false</item>
+        <item name="tabSelectedTextColor">@color/PHearing_white</item>
+        <item name="tabIndicatorColor">@color/PHearing_white</item>
+    </style>
+
+    <style name="Widget.PHearing.PopupMenu" parent="Base.Widget.AppCompat.Light.PopupMenu">
+        <item name="android:textColorPrimary">@color/PHearing_text_grey</item>
+    </style>
+
+    <style name="TextAppearance.PHearing.DataText" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="android:textSize">18sp</item>
+        <item name="android:layout_margin">8dp</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+
+    <style name="TextAppearance.PHearing.Button" parent="TextAppearance.MaterialComponents.Button">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="TextAppearance.PHearing.TextInputLayout.HintText" parent="TextAppearance.MaterialComponents.Subtitle2">
+        <item name="android:textColor">?attr/colorPrimary</item>
+    </style>
+</resources>

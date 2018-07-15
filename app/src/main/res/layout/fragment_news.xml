@@ -7,12 +7,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.main.NewsFragment">
 
-    <FrameLayout
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/app_bar_height"
-        android:background="?attr/colorPrimary">
+        android:layout_height="@dimen/app_bar_height">
 
         <com.google.android.material.card.MaterialCardView
+            android:id="@+id/news_search_card"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="8dp"
@@ -31,47 +31,53 @@
                 android:text="@string/search"
                 android:textSize="16sp" />
         </com.google.android.material.card.MaterialCardView>
-    </FrameLayout>
+    </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.core.widget.NestedScrollView
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/news_srl"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/news_navigation_rv"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:itemCount="1"
-                tools:listitem="@layout/item_news_navigation" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            <io.github.phearing.phearing.common.widget.PointIndicator
-                android:id="@+id/news_indicator"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                app:indicatorPointRadius="4dp"
-                app:layout_constraintBottom_toTopOf="@+id/news_data_rv"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/news_navigation_rv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:itemCount="1"
+                    tools:listitem="@layout/item_news_navigation" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/news_data_rv"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/news_navigation_rv"
-                tools:itemCount="4"
-                tools:listitem="@layout/item_news_data"/>
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.core.widget.NestedScrollView>
+                <io.github.phearing.phearing.common.widget.PointIndicator
+                    android:id="@+id/news_indicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    app:indicatorPointRadius="4dp"
+                    app:layout_constraintBottom_toTopOf="@+id/news_data_rv"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/news_data_rv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/news_navigation_rv"
+                    tools:itemCount="3"
+                    tools:listitem="@layout/item_news_data" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </LinearLayout>

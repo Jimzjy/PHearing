@@ -1,8 +1,10 @@
 package io.github.phearing.phearing.ui.main
 
 import android.Manifest
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.drawable.BitmapDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.app.ActivityCompat
@@ -15,8 +17,10 @@ import io.github.phearing.phearing.ui.auth.AuthActivity
 import io.github.phearing.phearing.ui.history.HistoryActivity
 import io.github.phearing.phearing.ui.headphone.HeadphoneActivity
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_main.view.*
 import kotlinx.android.synthetic.main.layout_navigation_header.*
 import kotlinx.android.synthetic.main.layout_navigation_header.view.*
+import java.io.File
 
 class MainActivity : AppCompatActivity() {
 
@@ -50,7 +54,9 @@ class MainActivity : AppCompatActivity() {
             }
             true
         }
-        main_navigation_view.getHeaderView(0).main_username_tv.text = "JC"
+        main_navigation_view.getHeaderView(0).main_username_tv.text = getPreferences().getString("username",
+                resources.getString(R.string.auth_login))
+        setAvatarImage()
         main_navigation_view.getHeaderView(0).setOnClickListener {
             startActivity(Intent(this@MainActivity, AuthActivity::class.java))
         }
@@ -81,7 +87,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun requestPermission() {
-        val permissions = arrayOf(Manifest.permission.RECORD_AUDIO)
+        val permissions = arrayOf(Manifest.permission.RECORD_AUDIO, Manifest.permission.READ_EXTERNAL_STORAGE,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE)
         val notGetPermissionList = mutableListOf<String>()
 
         for (p in permissions) {
@@ -92,6 +99,18 @@ class MainActivity : AppCompatActivity() {
 
         if (notGetPermissionList.size > 0) {
             ActivityCompat.requestPermissions(this, notGetPermissionList.toTypedArray(), 0)
+        }
+    }
+
+    private fun getPreferences() = getSharedPreferences("userData", Context.MODE_PRIVATE)
+
+    private fun setAvatarImage() {
+        val avatar = getPreferences().getString("avatar", "")
+        if (avatar.isNotEmpty()) {
+            val file = File(avatar)
+            if (file.exists()) {
+                main_navigation_view.getHeaderView(0).main_avatar_iv.setImageDrawable(BitmapDrawable(resources, file.path))
+            }
         }
     }
 }

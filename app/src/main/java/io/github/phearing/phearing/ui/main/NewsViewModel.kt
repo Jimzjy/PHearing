@@ -1,43 +1,117 @@
 package io.github.phearing.phearing.ui.main
 
 import android.app.Application
-import android.content.Context
-import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
-import androidx.core.content.ContextCompat
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import io.github.phearing.phearing.R
-import io.github.phearing.phearing.common.NewsData
+import dagger.Component
+import io.github.phearing.phearing.common.*
+import io.github.phearing.phearing.network.news.NewsRepo
+import javax.inject.Inject
+import javax.inject.Scope
 
 class NewsViewModel(application: Application) : AndroidViewModel(application) {
-    val newsNavigation = MutableLiveData<List<Drawable>>()
-    val newsData = MutableLiveData<List<NewsData>>()
+    val newsNavigation = MutableLiveData<List<NavigationDataShow>>()
+    val newsData = MutableLiveData<List<NewsListDataShow>>()
+    val newsListDataList: LiveData<List<NewsListData>>
+    val newsNavigationDataList: LiveData<List<NavigationData>>
+    val newsListDataImage: LiveData<Drawable>
+    val newsNavigationDataImage: LiveData<Drawable>
+    var isAddDataMode = false
+
+    @Inject
+    lateinit var newsRepo: NewsRepo
 
     init {
-        newsNavigation.value = listOf(
-                ContextCompat.getDrawable(application, R.drawable.vector_drawable_clear)!!,
-                ContextCompat.getDrawable(application, R.drawable.vector_drawable_check)!!,
-                ContextCompat.getDrawable(application, R.drawable.vector_drawable_back)!!
-        )
-        newsData.value = listOf(
-                NewsData("Android Studio 3.2 Beta 版本已经发布", "Android Studio 3.2 Beta 版本已经发布。官方 Android IDE 的最新版本可帮助开发者快速上手Android Jetpack、Android P 开发者预览版以及新的 Android App Bundle 格式。它还包括 Emulator Snapshots 和 Energy Profiler",
-                        ContextCompat.getDrawable(application, R.drawable.vector_drawable_check)!!),
-                NewsData("Android Studio 3.2 Beta 版本已经发布", "Android Studio 3.2 Beta 版本已经发布。官方 Android IDE 的最新版本可帮助开发者快速上手Android Jetpack、Android P 开发者预览版以及新的 Android App Bundle 格式。它还包括 Emulator Snapshots 和 Energy Profiler",
-                        null),
-                NewsData("Android Studio 3.2 Beta 版本已经发布", "Android Studio 3.2 Beta 版本已经发布。官方 Android IDE 的最新版本可帮助开发者快速上手Android Jetpack、Android P 开发者预览版以及新的 Android App Bundle 格式。它还包括 Emulator Snapshots 和 Energy Profiler",
-                        ContextCompat.getDrawable(application, R.drawable.vector_drawable_sun)!!),
-                NewsData("Android Studio 3.2 Beta 版本已经发布", "Android Studio 3.2 Beta 版本已经发布。官方 Android IDE 的最新版本可帮助开发者快速上手Android Jetpack、Android P 开发者预览版以及新的 Android App Bundle 格式。它还包括 Emulator Snapshots 和 Energy Profiler",
-                        null),
-                NewsData("Android Studio 3.2 Beta 版本已经发布", "Android Studio 3.2 Beta 版本已经发布。官方 Android IDE 的最新版本可帮助开发者快速上手Android Jetpack、Android P 开发者预览版以及新的 Android App Bundle 格式。它还包括 Emulator Snapshots 和 Energy Profiler",
-                        null),
-                NewsData("Android Studio 3.2 Beta 版本已经发布", "Android Studio 3.2 Beta 版本已经发布。官方 Android IDE 的最新版本可帮助开发者快速上手Android Jetpack、Android P 开发者预览版以及新的 Android App Bundle 格式。它还包括 Emulator Snapshots 和 Energy Profiler",
-                        null),
-                NewsData("Android Studio 3.2 Beta 版本已经发布", "Android Studio 3.2 Beta 版本已经发布。官方 Android IDE 的最新版本可帮助开发者快速上手Android Jetpack、Android P 开发者预览版以及新的 Android App Bundle 格式。它还包括 Emulator Snapshots 和 Energy Profiler",
-                        null),
-                NewsData("Android Studio 3.2 Beta 版本已经发布", "Android Studio 3.2 Beta 版本已经发布。官方 Android IDE 的最新版本可帮助开发者快速上手Android Jetpack、Android P 开发者预览版以及新的 Android App Bundle 格式。它还包括 Emulator Snapshots 和 Energy Profiler",
-                        null)
-        )
+        DaggerNewsComponent.builder()
+                .applicationComponent(PHApplication.applicationComponent)
+                .build().inject(this)
+        newsListDataList = newsRepo.newsListDataList
+        newsListDataImage = newsRepo.newsListDataImage
+        newsNavigationDataList = newsRepo.newsNavigationDataList
+        newsNavigationDataImage = newsRepo.newsNavigationDataImage
+    }
+
+    fun updateNews() {
+        newsRepo.listNews()
+    }
+
+    fun updateNextNews() {
+        if (newsRepo.newsListNext.isEmpty()) {
+            newsRepo.newsListDataList.value = null
+        } else {
+            newsRepo.listNextNews()
+        }
+    }
+
+    fun refreshNews(imageBuf: MutableList<Drawable?>?) {
+        newsListDataList.value?.let {
+            val data = mutableListOf<NewsListDataShow>()
+
+            it.forEach {
+                if (it.image.isNotEmpty()) {
+                    data.add(NewsListDataShow(it.url, it.title, it.excerpt, imageBuf?.get(0)))
+                    imageBuf?.removeAt(0)
+                } else {
+                    data.add(NewsListDataShow(it.url, it.title, it.excerpt, null))
+                }
+            }
+
+            if (isAddDataMode) {
+                val tmp = mutableListOf<NewsListDataShow>()
+                newsData.value?.let {
+                    tmp.addAll(it)
+                    tmp.addAll(data)
+                }
+                newsData.value = tmp
+            } else {
+                newsData.value = data
+            }
+        }
+    }
+
+    fun getNewsImage(url: String) {
+        newsRepo.getNewsListDataImage(url)
+    }
+
+    fun updateNavigation() {
+        if (!isAddDataMode) {
+            newsRepo.listNavigation()
+        } else {
+            newsRepo.newsNavigationDataList.value = null
+        }
+    }
+
+    fun getNavigationImage(url: String) {
+        newsRepo.getNewsNavigationDataImage(url)
+    }
+
+    fun refreshNavigation(imageBuf: MutableList<Drawable?>) {
+        newsNavigationDataList.value?.let {
+            val data = mutableListOf<NavigationDataShow>()
+
+            it.forEach {
+                if (it.image.isNotEmpty()) {
+                    if (imageBuf[0] != null) {
+                        data.add(NavigationDataShow(imageBuf[0]!!, it.contentUrl))
+                        imageBuf.removeAt(0)
+                    }
+                }
+            }
+
+            newsNavigation.value = data
+        }
     }
 }
+
+@NewsScope
+@Component(dependencies = [ApplicationComponent::class])
+interface NewsComponent {
+    fun inject(newsViewModel: NewsViewModel)
+    fun inject(contentViewModel: ContentViewModel)
+}
+
+@Scope
+@Retention(AnnotationRetention.RUNTIME)
+annotation class NewsScope

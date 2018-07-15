@@ -9,22 +9,26 @@ import io.github.phearing.phearing.room.headphone.INSERT_FLAG
 import io.github.phearing.phearing.room.headphone.UPDATE_FLAG
 
 class SpeechDataRepo {
-    private val speechDataDao: SpeechDataDao = Room.databaseBuilder(PHApplication.instance.applicationContext,
+    private val mSpeechDataDao: SpeechDataDao = Room.databaseBuilder(PHApplication.instance.applicationContext,
             SpeechDatabase::class.java, "speech_data_database").build().speechDataDao()
     val allSpeechData: LiveData<List<SpeechData>> by lazy {
-        speechDataDao.loadAll()
+        mSpeechDataDao.loadAll()
     }
 
     fun insertSpeechData(vararg speechData: SpeechData) {
-        PrimarySpeechDataTask(speechDataDao, INSERT_FLAG).execute(*speechData)
+        PrimarySpeechDataTask(mSpeechDataDao, INSERT_FLAG).execute(*speechData)
     }
 
     fun deleteSpeechData(vararg speechData: SpeechData) {
-        PrimarySpeechDataTask(speechDataDao, DELETE_FLAG).execute(*speechData)
+        PrimarySpeechDataTask(mSpeechDataDao, DELETE_FLAG).execute(*speechData)
     }
 
     fun loadNextSpeechData(time: Long, num: Int): LiveData<List<SpeechData>> {
-        return speechDataDao.loadNext(time, num)
+        return mSpeechDataDao.loadNext(time, num)
+    }
+
+    fun updateSpeechData(vararg speechData: SpeechData) {
+        PrimarySpeechDataTask(mSpeechDataDao, UPDATE_FLAG).execute(*speechData)
     }
 
     private class PrimarySpeechDataTask(private val mDao: SpeechDataDao, private val mFlag: Int)

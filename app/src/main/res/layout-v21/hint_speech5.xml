@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        xmlns:tools="http://schemas.android.com/tools">
+
+        <TextView
+            android:id="@+id/hint_speech5_tv0"
+            style="@style/Widget.PHearing.HintTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/speech_guide_hint3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/hint_speech5_iv0"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/oval_background_green"
+            android:padding="16dp"
+            android:src="@drawable/vector_drawable_check"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/hint_speech5_tv0"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/hint_speech5_tv1"
+            style="@style/Widget.PHearing.HintTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/speech_guide_hint4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/hint_speech5_iv0" />
+
+        <ImageView
+            android:id="@+id/hint_speech5_iv1"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/oval_background_red"
+            android:padding="16dp"
+            android:src="@drawable/vector_drawable_clear"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/hint_speech5_tv1"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/hint_speech5_tv2"
+            style="@style/Widget.PHearing.HintTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/speech_guide_hint5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/hint_speech5_iv1" />
+
+        <TextView
+            android:id="@+id/hint_speech5_tv3"
+            android:layout_width="0dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/round_corner_ripple_primary"
+            android:gravity="center"
+            android:text="你好"
+            android:textColor="@color/PHearing_white"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@+id/hint_speech5_tv4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/hint_speech5_tv2"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:id="@+id/hint_speech5_tv4"
+            android:layout_width="0dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/round_corner_ripple_primary"
+            android:gravity="center"
+            android:text="兰山"
+            android:textColor="@color/PHearing_white"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/hint_speech5_tv3"
+            app:layout_constraintTop_toBottomOf="@+id/hint_speech5_tv2"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:id="@+id/hint_speech5_tv5"
+            android:layout_width="0dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/round_corner_ripple_primary"
+            android:gravity="center"
+            android:text="落幕"
+            android:textColor="@color/PHearing_white"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@+id/hint_speech5_tv6"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/hint_speech5_tv3"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:id="@+id/hint_speech5_tv6"
+            android:layout_width="0dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/round_corner_ripple_primary"
+            android:gravity="center"
+            android:text="脉冲"
+            android:textColor="@color/PHearing_white"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/hint_speech5_tv5"
+            app:layout_constraintTop_toBottomOf="@+id/hint_speech5_tv4"
+            tools:ignore="HardcodedText" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

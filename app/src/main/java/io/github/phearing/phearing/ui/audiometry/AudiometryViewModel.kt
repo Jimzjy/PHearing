@@ -228,7 +228,7 @@ class AudiometryViewModel(application: Application) : AndroidViewModel(applicati
     }
 
     private fun insertAudiometryData() {
-        audiometryDataRepo.insertAudiometryData(AudiometryData(Date().time,
+        audiometryDataRepo.insertAudiometryData(AudiometryData(-1, Date().time,
                 mPointList.joinToString("|"),
                 mXPointList.joinToString("|"),
                 rightLevel, leftLevel))

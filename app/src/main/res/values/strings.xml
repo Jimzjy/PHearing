@@ -48,10 +48,14 @@
     <string name="history">History</string>
 
     <string name="news">News</string>
+    <string name="news_loading_failed">Loading Failed</string>
+    <string name="news_loading_successful">Loading Successful</string>
 
     <string name="auth_login">Login</string>
     <string name="auth_register">Register</string>
     <string name="auth_sign_out">Sign Out</string>
+    <string name="auth_birth_year">Birth Year: </string>
+    <string name="auth_phoneNumber">Phone Number: </string>
     <string name="auth_sex">Sex: </string>
     <string name="auth_male">Male</string>
     <string name="auth_female">Female</string>
@@ -62,6 +66,23 @@
     <string name="auth_username_empty">Username can not be empty</string>
     <string name="auth_inconsistent_password">Inconsistent password</string>
     <string name="auth_birth_empty">Birth year can not be empty</string>
+    <string name="auth_login_successful">Login Successful</string>
+    <string name="auth_login_failed">Login Failed</string>
+    <string name="auth_register_failed">Register Failed</string>
+    <string name="auth_register_successful">Register Successful</string>
+    <string name="auth_change_user_data">Change Data</string>
+    <string name="auth_change_data_failed">Change Data Failed</string>
+    <string name="auth_change_data_successful">Change Data Successful</string>
+    <string name="auth_data_change_hint">If you don\'t want to change the data, leave it blank</string>
+    <string name="auth_getUser_failed">Get user data failed</string>
+    <string name="auth_getUser_successful">Get user data successful</string>
+    <string name="auth_updating_user_data">Updating user data</string>
+    <string name="auth_getId_failed">Get user ID failed</string>
+    <string name="auth_getAvatar_failed">Get avatar failed</string>
+    <string name="auth_getAvatar_successful">Get avatar successful</string>
+    <string name="auth_getting_avatar">Getting Avatar</string>
+    <string name="auth_update_avatar_failed">Update avatar failed</string>
+    <string name="auth_update_avatar_successful">Update avatar successful</string>
 
     <string name="ph_start">Start</string>
     <string name="ph_stop">Stop</string>
@@ -93,7 +114,12 @@
     <string name="password_re_enter">Re-enter Password</string>
     <string name="adjust">Adjust</string>
     <string name="birth_year">Birth Year</string>
+    <string name="phone_number">Phone Number</string>
     <string name="data">Data</string>
+    <string name="true_ph">True</string>
+    <string name="false_ph">False</string>
+    
+    <string name="ph_appbar_scrolling_view_behavior" translatable="false">com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>

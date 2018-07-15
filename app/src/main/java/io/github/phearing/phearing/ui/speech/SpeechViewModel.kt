@@ -164,7 +164,7 @@ class SpeechViewModel(application: Application) : AndroidViewModel(application) 
     }
 
     private fun insertSpeechData() {
-        mSpeechDataRepo.insertSpeechData(SpeechData(Date().time, score, mSpeechUtil.tableNo))
+        mSpeechDataRepo.insertSpeechData(SpeechData(-1, Date().time, score, mSpeechUtil.tableNo))
     }
 }
 

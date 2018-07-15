@@ -5,6 +5,8 @@ import android.content.Context
 import dagger.Component
 import dagger.Module
 import dagger.Provides
+import io.github.phearing.phearing.network.news.NewsRepo
+import io.github.phearing.phearing.network.user.UserRepo
 import io.github.phearing.phearing.room.audiometry.AudiometryDataRepo
 import io.github.phearing.phearing.room.headphone.HeadphoneRepo
 import io.github.phearing.phearing.room.speech.SpeechDataRepo
@@ -42,6 +44,14 @@ class ApplicationModule(private val application: PHApplication) {
     @Provides
     @ApplicationScope
     fun provideSpeechDataRepo() = SpeechDataRepo()
+
+    @Provides
+    @ApplicationScope
+    fun provideUserRepo() = UserRepo()
+
+    @Provides
+    @ApplicationScope
+    fun provideNewsRepo() = NewsRepo()
 }
 
 @ApplicationScope
@@ -50,6 +60,8 @@ interface ApplicationComponent {
     fun headphoneRepo(): HeadphoneRepo
     fun audiometryDataRepo(): AudiometryDataRepo
     fun speechDataRepo(): SpeechDataRepo
+    fun userRepo(): UserRepo
+    fun newsRepo(): NewsRepo
 }
 
 @Scope

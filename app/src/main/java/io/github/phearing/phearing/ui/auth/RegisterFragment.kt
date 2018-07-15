@@ -7,8 +7,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 
 import io.github.phearing.phearing.R
+import io.github.phearing.phearing.common.widget.LoadingDialog
 import io.github.phearing.phearing.databinding.FragmentRegisterBinding
 
 class RegisterFragment : Fragment() {
@@ -19,6 +21,8 @@ class RegisterFragment : Fragment() {
 
     private lateinit var mViewModel: RegisterViewModel
     private lateinit var mBinding: FragmentRegisterBinding
+    private var mIsReady = false
+    private var mLoadingDialog: LoadingDialog? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -53,7 +57,11 @@ class RegisterFragment : Fragment() {
                 mBinding.authRegisterBirthTil.error = resources.getString(R.string.auth_birth_empty)
                 return@setOnClickListener
             }
-            // do register
+            mIsReady = true
+            mViewModel.register()
+            mLoadingDialog = LoadingDialog.newInstance()
+            mLoadingDialog?.isCancelable = false
+            mLoadingDialog?.show(fragmentManager, "register_loadingDialog")
         }
         mBinding.authRegisterUsernameEt.setOnKeyListener { _, _, _ ->
             if (mViewModel.username.value?.isEmpty() == false) {
@@ -81,5 +89,17 @@ class RegisterFragment : Fragment() {
             }
             false
         }
+
+        mViewModel.user.observe(this, Observer {
+            if (mIsReady) {
+                mLoadingDialog?.dismiss()
+                if (it == null) {
+                    mLoadingDialog = null
+                } else {
+                    (activity as AuthActivity).onBackPressed()
+                }
+                mIsReady = false
+            }
+        })
     }
 }

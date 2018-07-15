@@ -17,5 +17,5 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="contentDescription"
         tools:src="@drawable/vector_drawable_check"
-        android:tint="@color/colorPrimary" />
+        tools:tint="@color/colorPrimary" />
 </androidx.constraintlayout.widget.ConstraintLayout>

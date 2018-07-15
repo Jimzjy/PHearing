@@ -151,34 +151,38 @@ class AudiometryFragment : Fragment() {
 
                 for (i in 0 until 7) {
                     val list = mutableListOf<Float>()
-                    right.subList(i, i + 15).forEach {
+                    right.subList(i * 15, i * 15 + 15).forEach {
                         list.add(it.toFloat())
                     }
                     mViewModel.rightVolumeDBHL.add(list.toFloatArray())
                     for (i0 in 0 until list.size) {
                         if (list[i0] >= 0) {
                             mViewModel.minMaxRightDBHL[0].add(i0 * 5)
+                            break
                         }
                     }
                     for (i0 in (list.size - 1) downTo 0) {
                         if (list[i0] >= 0) {
                             mViewModel.minMaxRightDBHL[1].add(i0 * 5)
+                            break
                         }
                     }
 
                     list.clear()
-                    left.subList(i, i + 15).forEach {
+                    left.subList(i * 15, i * 15 + 15).forEach {
                         list.add(it.toFloat())
                     }
                     mViewModel.leftVolumeDBHL.add(list.toFloatArray())
                     for (i0 in 0 until list.size) {
                         if (list[i0] >= 0) {
                             mViewModel.minMaxLeftDBHL[0].add(i0 * 5)
+                            break
                         }
                     }
                     for (i0 in (list.size - 1) downTo 0) {
                         if (list[i0] >= 0) {
                             mViewModel.minMaxLeftDBHL[1].add(i0 * 5)
+                            break
                         }
                     }
                 }

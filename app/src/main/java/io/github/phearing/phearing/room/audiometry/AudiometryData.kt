@@ -6,6 +6,8 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "audiometry_data")
 data class AudiometryData (
+        var id: Int,
+
         @PrimaryKey
         @ColumnInfo(name = "create_time")
         val createTime: Long,

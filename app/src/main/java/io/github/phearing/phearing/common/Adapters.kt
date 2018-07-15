@@ -1,9 +1,6 @@
 package io.github.phearing.phearing.common
 
 import android.content.Context
-import android.graphics.Bitmap
-import android.graphics.drawable.BitmapDrawable
-import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -130,16 +127,16 @@ class HistoryRVAdapter(context: Context, private val mHistoryTimeList: List<Long
     }
 }
 
-class NewsNavigationRVAdapter(context: Context, private val mImageList: List<Drawable>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class NewsNavigationRVAdapter(context: Context, private val mDataList: List<NavigationDataShow>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val mInflater = LayoutInflater.from(context)
-    private var mClickCallback: ((position: Int) -> Unit)? = null
+    private var mClickCallback: ((url: String) -> Unit)? = null
 
     inner class ViewHolder(root: View) : RecyclerView.ViewHolder(root) {
         val imageView: ImageView = root.findViewById(R.id.item_news_navigation_iv)
 
         init {
             root.setOnClickListener {
-                mClickCallback?.invoke(adapterPosition)
+                mClickCallback?.invoke(mDataList[adapterPosition].contentUrl)
             }
         }
     }
@@ -149,22 +146,22 @@ class NewsNavigationRVAdapter(context: Context, private val mImageList: List<Dra
     }
 
     override fun getItemCount(): Int {
-        return mImageList.size
+        return mDataList.size
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val viewHolder = holder as ViewHolder
-        viewHolder.imageView.setImageDrawable(mImageList[position])
+        viewHolder.imageView.setImageDrawable(mDataList[position].image)
     }
 
-    fun setOnClickCallback(callback: (position: Int) -> Unit) {
+    fun setOnClickCallback(callback: (url: String) -> Unit) {
         mClickCallback = callback
     }
 }
 
-class NewsDataRVAdapter(context: Context, private val mDataList: List<NewsData>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class NewsDataRVAdapter(context: Context, private val mDataList: List<NewsListDataShow>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val mInflater = LayoutInflater.from(context)
-    private var mClickCallback: ((position: Int) -> Unit)? = null
+    private var mClickCallback: ((url: String) -> Unit)? = null
 
     inner class ViewHolder(root: View) : RecyclerView.ViewHolder(root) {
         val titleTv: TextView = root.findViewById(R.id.item_news_data_title_tv)
@@ -173,7 +170,7 @@ class NewsDataRVAdapter(context: Context, private val mDataList: List<NewsData>)
 
         init {
             root.setOnClickListener {
-                mClickCallback?.invoke(adapterPosition)
+                mClickCallback?.invoke(mDataList[adapterPosition].url)
             }
         }
     }
@@ -189,15 +186,16 @@ class NewsDataRVAdapter(context: Context, private val mDataList: List<NewsData>)
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val viewHolder = holder as ViewHolder
         viewHolder.titleTv.text = mDataList[position].title
-        viewHolder.contentTv.text = mDataList[position].content
+        viewHolder.contentTv.text = mDataList[position].excerpt
         if (mDataList[position].image != null) {
             viewHolder.imageView.setImageDrawable(mDataList[position].image)
+            viewHolder.imageView.visibility = View.VISIBLE
         } else {
             viewHolder.imageView.visibility = View.GONE
         }
     }
 
-    fun setOnClickCallback(callback: (position: Int) -> Unit) {
+    fun setOnClickCallback(callback: (url: String) -> Unit) {
         mClickCallback = callback
     }
 }

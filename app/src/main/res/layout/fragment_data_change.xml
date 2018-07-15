@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="viewModel"
+            type="io.github.phearing.phearing.ui.auth.DataChangeViewModel" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp"
+            tools:context=".ui.auth.DataChangeFragment">
+
+            <TextView
+                style="@style/Widget.PHearing.HintTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:textSize="14sp"
+                android:text="@string/auth_data_change_hint"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/auth_change_password_til"
+                style="@style/Widget.PHearing.TextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:passwordToggleEnabled="true"
+                android:hint="@string/password">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/auth_change_password_et"
+                    style="@style/Widget.PHearing.TextInputEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    android:text="@={viewModel.password}"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/auth_change_passwordRe_til"
+                style="@style/Widget.PHearing.TextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:passwordToggleEnabled="true"
+                android:hint="@string/password_re_enter">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/auth_change_password_re_et"
+                    style="@style/Widget.PHearing.TextInputEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    android:text="@={viewModel.passwordRe}"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/auth_change_birth_til"
+                style="@style/Widget.PHearing.TextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/birth_year">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/auth_change_birth_et"
+                    style="@style/Widget.PHearing.TextInputEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:maxLength="4"
+                    android:text="@={viewModel.birth}"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/auth_change_phoneNumber_til"
+                style="@style/Widget.PHearing.TextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/phone_number">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/auth_change_phoneNumber_et"
+                    style="@style/Widget.PHearing.TextInputEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="phone"
+                    android:text="@={viewModel.phoneNumber}"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <RadioGroup
+                android:id="@+id/auth_change_sex_rg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="?attr/colorAccent"
+                    android:text="@string/auth_sex"/>
+
+                <RadioButton
+                    android:id="@+id/auth_change_sex_male"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:checked="@={viewModel.sexMale}"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="@string/auth_male"/>
+
+                <RadioButton
+                    android:id="@+id/auth_change_sex_female"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:checked="@={viewModel.sexFemale}"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="@string/auth_female"/>
+            </RadioGroup>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/auth_change_deaf_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:text="@string/auth_deaf"
+                    android:textColor="?attr/colorAccent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatCheckBox
+                    android:id="@+id/auth_change_deaf_cb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="160dp"
+                    android:checked="@={viewModel.deaf}"
+                    app:layout_constraintBottom_toBottomOf="@+id/auth_change_deaf_tv"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/auth_change_deaf_tv" />
+
+                <TextView
+                    android:id="@+id/auth_change_hearingAid_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center"
+                    android:text="@string/auth_hearing_aid"
+                    android:textColor="?attr/colorAccent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/auth_change_deaf_tv" />
+
+                <androidx.appcompat.widget.AppCompatCheckBox
+                    android:id="@+id/auth_change_hearingAid_cb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="160dp"
+                    android:checked="@={viewModel.hearingAid}"
+                    app:layout_constraintBottom_toBottomOf="@+id/auth_change_hearingAid_tv"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/auth_change_hearingAid_tv" />
+
+                <TextView
+                    android:id="@+id/auth_change_cochlearImplant_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center"
+                    android:text="@string/auth_cochlear_implant"
+                    android:textColor="?attr/colorAccent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/auth_change_hearingAid_tv" />
+
+                <androidx.appcompat.widget.AppCompatCheckBox
+                    android:id="@+id/auth_change_cochlearImplant_cb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="160dp"
+                    android:checked="@={viewModel.cochlearImplant}"
+                    app:layout_constraintBottom_toBottomOf="@+id/auth_change_cochlearImplant_tv"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/auth_change_cochlearImplant_tv" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/auth_change_change_bt"
+                style="@style/Widget.PHearing.Button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                app:backgroundTint="?attr/colorPrimary"
+                android:text="@string/auth_change_user_data"
+                android:layout_gravity="end"/>
+        </LinearLayout>
+    </ScrollView>
+</layout>

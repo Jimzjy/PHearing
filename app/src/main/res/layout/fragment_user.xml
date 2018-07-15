@@ -1,127 +1,233 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:minHeight="560dp"
     tools:context=".ui.auth.UserFragment">
 
-    <View
-        android:id="@+id/auth_user_avatar_back"
+    <data>
+        <variable
+            name="viewModel"
+            type="io.github.phearing.phearing.ui.auth.UserViewModel" />
+    </data>
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/auth_user_srl"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:background="?attr/colorPrimary"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <com.gcssloop.widget.RCImageView
-        android:id="@+id/auth_user_avatar_iv"
-        android:layout_width="96dp"
-        android:layout_height="96dp"
-        android:layout_marginTop="32dp"
-        android:src="@drawable/vector_drawable_sun"
-        app:clip_background="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:round_as_circle="true"
-        app:stroke_width="2dp" />
-
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/auth_user_username_card"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        app:cardBackgroundColor="@color/colorPrimaryDark"
-        app:cardCornerRadius="6dp"
-        app:layout_constraintBottom_toBottomOf="@+id/auth_user_avatar_back"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/auth_user_avatar_iv">
-
-        <TextView
-            android:id="@+id/auth_user_username_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingStart="16dp"
-            android:paddingTop="4dp"
-            android:paddingEnd="16dp"
-            android:paddingBottom="4dp"
-            android:textColor="@color/PHearing_white"
-            tools:text="Jimzjy" />
-    </com.google.android.material.card.MaterialCardView>
-
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/auth_user_data_card"
-        style="@style/Widget.PHearing.CardView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/auth_user_avatar_back">
+        android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/auth_user_data_sex"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
+            <View
+                android:id="@+id/auth_user_avatar_back"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="?attr/colorPrimary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.gcssloop.widget.RCImageView
+                android:id="@+id/auth_user_avatar_iv"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:layout_marginTop="32dp"
+                android:src="@drawable/vector_drawable_sun"
+                app:clip_background="true"
+                android:scaleType="centerCrop"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text="@string/auth_sex" />
+                app:round_as_circle="true"
+                app:stroke_width="2dp" />
 
-            <TextView
-                android:id="@+id/auth_user_data_deaf"
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/auth_user_username_card"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="16dp"
+                app:cardBackgroundColor="@color/colorPrimaryDark"
+                app:cardCornerRadius="6dp"
+                app:layout_constraintBottom_toBottomOf="@+id/auth_user_avatar_back"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/auth_user_data_sex"
-                tools:text="@string/auth_deaf" />
+                app:layout_constraintTop_toBottomOf="@+id/auth_user_avatar_iv">
 
-            <TextView
-                android:id="@+id/auth_user_data_hearingAid"
+                <TextView
+                    android:id="@+id/auth_user_username_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="16dp"
+                    android:paddingTop="4dp"
+                    android:paddingEnd="16dp"
+                    android:paddingBottom="4dp"
+                    android:textColor="@color/PHearing_white"
+                    android:text="@{viewModel.username}" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/auth_user_data_card"
+                style="@style/Widget.PHearing.CardView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/auth_user_avatar_back">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/auth_user_data_birthYear"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:text="@string/auth_birth_year"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/auth_user_data_phoneNumber"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/auth_phoneNumber"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/auth_user_data_birthYear" />
+
+                    <TextView
+                        android:id="@+id/auth_user_data_sex"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/auth_user_data_phoneNumber"
+                        android:text="@string/auth_sex" />
+
+                    <TextView
+                        android:id="@+id/auth_user_data_deaf"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/auth_user_data_sex"
+                        android:text="@string/auth_deaf" />
+
+                    <TextView
+                        android:id="@+id/auth_user_data_hearingAid"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/auth_user_data_deaf"
+                        android:text="@string/auth_hearing_aid" />
+
+                    <TextView
+                        android:id="@+id/auth_user_data_cochlearImplant"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/auth_user_data_hearingAid"
+                        android:text="@string/auth_cochlear_implant" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:maxLines="1"
+                        android:text="@{viewModel.birthYear}"
+                        app:layout_constraintBottom_toBottomOf="@+id/auth_user_data_birthYear"
+                        app:layout_constraintStart_toEndOf="@+id/auth_user_data_cochlearImplant"
+                        app:layout_constraintTop_toTopOf="@+id/auth_user_data_birthYear" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:maxLines="1"
+                        android:text="@{viewModel.phoneNumber}"
+                        app:layout_constraintBottom_toBottomOf="@+id/auth_user_data_phoneNumber"
+                        app:layout_constraintStart_toEndOf="@+id/auth_user_data_cochlearImplant"
+                        app:layout_constraintTop_toTopOf="@+id/auth_user_data_phoneNumber" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:maxLines="1"
+                        android:text="@{viewModel.sex}"
+                        app:layout_constraintBottom_toBottomOf="@+id/auth_user_data_sex"
+                        app:layout_constraintStart_toEndOf="@+id/auth_user_data_cochlearImplant"
+                        app:layout_constraintTop_toTopOf="@+id/auth_user_data_sex" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:maxLines="1"
+                        android:text="@{viewModel.deaf}"
+                        app:layout_constraintBottom_toBottomOf="@+id/auth_user_data_deaf"
+                        app:layout_constraintStart_toEndOf="@+id/auth_user_data_cochlearImplant"
+                        app:layout_constraintTop_toTopOf="@+id/auth_user_data_deaf" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:maxLines="1"
+                        android:text="@{viewModel.hearingAid}"
+                        app:layout_constraintBottom_toBottomOf="@+id/auth_user_data_hearingAid"
+                        app:layout_constraintStart_toEndOf="@+id/auth_user_data_cochlearImplant"
+                        app:layout_constraintTop_toTopOf="@+id/auth_user_data_hearingAid" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:maxLines="1"
+                        android:text="@{viewModel.cochlearImplant}"
+                        app:layout_constraintBottom_toBottomOf="@+id/auth_user_data_cochlearImplant"
+                        app:layout_constraintStart_toEndOf="@+id/auth_user_data_cochlearImplant"
+                        app:layout_constraintTop_toTopOf="@+id/auth_user_data_cochlearImplant" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/auth_user_data_change_bt"
+                        style="@style/Widget.PHearing.TextButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginBottom="8dp"
+                        android:text="@string/auth_change_user_data"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/auth_user_data_cochlearImplant" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/auth_user_sign_out_bt"
+                style="@style/Widget.PHearing.Button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/auth_sign_out"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/auth_user_data_deaf"
-                tools:text="@string/auth_hearing_aid" />
-
-            <TextView
-                android:id="@+id/auth_user_data_cochlearImplant"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="16dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/auth_user_data_hearingAid"
-                tools:text="@string/auth_cochlear_implant" />
+                app:layout_constraintTop_toBottomOf="@+id/auth_user_data_card" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </com.google.android.material.card.MaterialCardView>
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/auth_user_sign_out_bt"
-        style="@style/Widget.PHearing.Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/auth_sign_out"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/auth_user_data_card" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+</layout>

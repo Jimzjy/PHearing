@@ -7,14 +7,19 @@
     android:orientation="vertical"
     tools:context=".ui.main.TestFragment">
 
-    <TextView
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/app_bar_height"
-        android:background="?attr/colorPrimary"
-        android:gravity="center"
-        android:textSize="20sp"
-        android:textColor="@color/PHearing_white"
-        android:text="@string/test"/>
+        android:layout_height="@dimen/app_bar_height">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="?attr/colorPrimary"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:textColor="@color/PHearing_white"
+            android:text="@string/test"/>
+    </com.google.android.material.appbar.AppBarLayout>
 
     <ScrollView
         android:layout_width="match_parent"

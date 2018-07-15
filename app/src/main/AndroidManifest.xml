@@ -3,7 +3,9 @@
     package="io.github.phearing.phearing">
 
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:name=".common.PHApplication"
@@ -28,7 +30,9 @@
         <activity android:name=".ui.audiometry.AudiometryActivity" />
         <activity android:name=".ui.history.HistoryActivity" />
         <activity android:name=".ui.speech.SpeechActivity" />
-        <activity android:name=".ui.auth.AuthActivity"></activity>
+        <activity android:name=".ui.auth.AuthActivity" />
+        <activity android:name=".ui.main.ContentActivity" />
+        <activity android:name=".ui.main.SearchActivity"></activity>
     </application>
 
 </manifest>

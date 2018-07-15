@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/content_title_tv"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/app_bar_height"
+        android:layout_margin="8dp"
+        android:padding="8dp"
+        android:textColor="@color/PHearing_black"
+        android:textSize="16sp"
+        android:gravity="center_vertical"
+        android:background="@drawable/round_corner_background_light_grey"
+        tools:text="This is a Test. This is a Test. This is a Test. This is a Test. " />
+
+    <br.tiagohm.markdownview.MarkdownView
+        android:id="@+id/content_content_v"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:escapeHtml="false"/>
+
+    <TextView
+        android:id="@+id/content_time_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="bottom|end"
+        android:padding="32dp"
+        tools:text="2018-7-15 00:00:00"/>
+</LinearLayout>

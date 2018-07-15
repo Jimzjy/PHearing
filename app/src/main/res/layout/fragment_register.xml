@@ -86,6 +86,22 @@
                     android:text="@={viewModel.birth}"/>
             </com.google.android.material.textfield.TextInputLayout>
 
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/auth_register_phoneNumber_til"
+                style="@style/Widget.PHearing.TextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/phone_number">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/auth_register_phoneNumber_et"
+                    style="@style/Widget.PHearing.TextInputEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="phone"
+                    android:text="@={viewModel.phoneNumber}"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
             <RadioGroup
                 android:id="@+id/auth_register_sex_rg"
                 android:layout_width="match_parent"

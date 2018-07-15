@@ -10,23 +10,27 @@ import io.github.phearing.phearing.room.headphone.UPDATE_FLAG
 
 
 class AudiometryDataRepo {
-    private val audiometryDataDao: AudiometryDataDao = Room.databaseBuilder(PHApplication.instance.applicationContext,
+    private val mAudiometryDataDao: AudiometryDataDao = Room.databaseBuilder(PHApplication.instance.applicationContext,
             AudiometryDatabase::class.java, "audiometry_data_database")
             .build().audiometryDataDao()
     val allAudiometryData: LiveData<List<AudiometryData>> by lazy {
-        audiometryDataDao.loadAll()
+        mAudiometryDataDao.loadAll()
     }
 
     fun insertAudiometryData(vararg audiometryData: AudiometryData) {
-        PrimaryAudiometryDataTask(audiometryDataDao, INSERT_FLAG).execute(*audiometryData)
+        PrimaryAudiometryDataTask(mAudiometryDataDao, INSERT_FLAG).execute(*audiometryData)
     }
 
     fun deleteAudiometryData(vararg audiometryData: AudiometryData) {
-        PrimaryAudiometryDataTask(audiometryDataDao, DELETE_FLAG).execute(*audiometryData)
+        PrimaryAudiometryDataTask(mAudiometryDataDao, DELETE_FLAG).execute(*audiometryData)
     }
 
     fun loadNextAudiometryData(time: Long, num: Int): LiveData<List<AudiometryData>> {
-        return audiometryDataDao.loadNext(time, num)
+        return mAudiometryDataDao.loadNext(time, num)
+    }
+
+    fun updateAudiometryData(vararg audiometryData: AudiometryData) {
+        PrimaryAudiometryDataTask(mAudiometryDataDao, UPDATE_FLAG).execute(*audiometryData)
     }
 
     private class PrimaryAudiometryDataTask(private val mDao: AudiometryDataDao, private val mFlag: Int)

@@ -40,14 +40,12 @@
         <item name="android:layout_width">48dp</item>
         <item name="android:layout_height">48dp</item>
         <item name="android:padding">8dp</item>
-        <item name="android:background">@drawable/primary_ripple</item>
     </style>
 
     <style name="AppBar_Icon">
         <item name="android:layout_width">@dimen/app_bar_icon_size</item>
         <item name="android:layout_height">@dimen/app_bar_icon_size</item>
         <item name="android:padding">8dp</item>
-        <item name="android:background">@drawable/primary_ripple</item>
     </style>
 
     <style name="Widget.PHearing.ToolBar" parent="Widget.AppCompat.Toolbar">

@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_margin="8dp"
     android:padding="8dp"
-    android:background="@drawable/round_corner_ripple_primary">
+    android:background="@drawable/round_corner_background_primary">
 
     <TextView
         android:id="@+id/item_speech_choice_tv"

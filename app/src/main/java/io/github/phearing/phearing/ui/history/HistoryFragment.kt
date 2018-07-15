@@ -1,7 +1,6 @@
 package io.github.phearing.phearing.ui.history
 
 
-import android.accessibilityservice.AccessibilityService
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.view.*
@@ -70,10 +69,62 @@ class HistoryFragment : Fragment() {
 
     private fun init() {
         mViewModel.audiometryData.observe(this, Observer {
-            it?.let { setAudiometryDataList(it) }
+            it?.let {
+                it.forEach {
+                    if (it.id == -1) {
+                        mViewModel.uploadAudiometryData(it)
+                    }
+                }
+                setAudiometryDataList(it)
+            }
         })
         mViewModel.speechData.observe(this, Observer {
-            it?.let { setSpeechData(it) }
+            it?.let {
+                it.forEach {
+                    if (it.id == -1) {
+                        mViewModel.uploadSpeechData(it)
+                    }
+                }
+                setSpeechData(it)
+            }
+        })
+        mViewModel.audiometryDataLiveData.observe(this, Observer {
+            it?.let {
+                val id = it.id
+                val createTime = it.createTime
+                var data: AudiometryData? = null
+                mViewModel.audiometryData.value?.let {
+                    for (tmpData in it) {
+                        if (tmpData.createTime == createTime) {
+                            data = tmpData
+                            break
+                        }
+                    }
+                    data?.let {
+                        it.id = id
+                        mViewModel.updateAudiometryData(it)
+                    }
+                }
+            }
+        })
+        mViewModel.speechDataLiveData.observe(this, Observer {
+            it?.let {
+                val id = it.id
+                val createTime = it.createTime
+                var data: SpeechData? = null
+                mViewModel.speechData.value?.let {
+                    for (tmpData in it) {
+                        if (tmpData.createTime == createTime) {
+                            data = tmpData
+                            break
+                        }
+                    }
+                    data?.let {
+                        it.id = id
+                        mViewModel.updateSpeechData(it)
+                    }
+                }
+            }
         })
 
         mAudiometryRVAdapter.setOnClickCallback {
@@ -148,7 +199,7 @@ class HistoryFragment : Fragment() {
                     popupMenu.setOnMenuItemClickListener {
                         when(it.itemId) {
                             R.id.menu_history_speech_delete -> {
-                                mViewModel.deleteSpeechDate(position)
+                                mViewModel.deleteSpeechData(position)
                             }
                         }
                         true
