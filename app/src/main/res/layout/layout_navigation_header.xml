@@ -11,6 +11,7 @@
         android:layout_width="88dp"
         android:layout_height="88dp"
         android:src="@drawable/vector_drawable_sun"
+        android:scaleType="centerCrop"
         app:clip_background="true"
         app:round_as_circle="true"
         app:stroke_width="2dp"

@@ -32,7 +32,10 @@
         <activity android:name=".ui.speech.SpeechActivity" />
         <activity android:name=".ui.auth.AuthActivity" />
         <activity android:name=".ui.main.ContentActivity" />
-        <activity android:name=".ui.main.SearchActivity"></activity>
+        <activity
+            android:name=".ui.main.SearchActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".ui.about.AboutActivity"></activity>
     </application>
 
 </manifest>

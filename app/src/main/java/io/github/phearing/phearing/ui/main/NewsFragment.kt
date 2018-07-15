@@ -83,6 +83,9 @@ class NewsFragment : Fragment() {
     }
 
     private fun init() {
+        view?.news_search_card?.setOnClickListener {
+            startActivity(Intent(context, SearchActivity::class.java))
+        }
         view?.news_srl?.setOnRefreshListener {
             mViewModel.isAddDataMode = false
             update()

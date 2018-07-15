@@ -118,7 +118,9 @@
     <string name="data">Data</string>
     <string name="true_ph">True</string>
     <string name="false_ph">False</string>
-    
+    <string name="about">About</string>
+    <string name="open_source_license">Open Source License</string>
+
     <string name="ph_appbar_scrolling_view_behavior" translatable="false">com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior</string>
 
     <!-- TODO: Remove or change this placeholder text -->

@@ -13,6 +13,7 @@ import androidx.core.view.GravityCompat
 import androidx.viewpager.widget.ViewPager
 import io.github.phearing.phearing.R
 import io.github.phearing.phearing.common.ViewPagerFragmentAdapter
+import io.github.phearing.phearing.ui.about.AboutActivity
 import io.github.phearing.phearing.ui.auth.AuthActivity
 import io.github.phearing.phearing.ui.history.HistoryActivity
 import io.github.phearing.phearing.ui.headphone.HeadphoneActivity
@@ -50,6 +51,9 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.menu_main_history -> {
                     startActivity(Intent(this@MainActivity, HistoryActivity::class.java))
+                }
+                R.id.menu_main_about -> {
+                    startActivity(Intent(this@MainActivity, AboutActivity::class.java))
                 }
             }
             true

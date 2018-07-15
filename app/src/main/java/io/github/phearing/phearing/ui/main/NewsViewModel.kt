@@ -110,6 +110,7 @@ class NewsViewModel(application: Application) : AndroidViewModel(application) {
 interface NewsComponent {
     fun inject(newsViewModel: NewsViewModel)
     fun inject(contentViewModel: ContentViewModel)
+    fun inject(searchActivity: SearchActivity)
 }
 
 @Scope

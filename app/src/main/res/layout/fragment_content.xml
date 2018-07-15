@@ -14,6 +14,7 @@
         android:padding="8dp"
         android:textColor="@color/PHearing_black"
         android:textSize="16sp"
+        android:textAlignment="center"
         android:gravity="center_vertical"
         android:background="@drawable/round_corner_background_light_grey"
         tools:text="This is a Test. This is a Test. This is a Test. This is a Test. " />

@@ -11,4 +11,9 @@
         android:id="@+id/menu_main_history"
         android:title="@string/history"
         android:icon="@drawable/vector_drawable_history"/>
+
+    <item
+        android:id="@+id/menu_main_about"
+        android:title="@string/about"
+        android:icon="@drawable/vector_drawable_sun"/>
 </menu>

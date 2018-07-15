@@ -22,6 +22,7 @@ class NewsRepo {
     val newsNavigationDataList = MutableLiveData<List<NavigationData>>()
     val newsNavigationDataImage = MutableLiveData<Drawable>()
     val newsData = MutableLiveData<NewsData>()
+    val newsDataSearch = MutableLiveData<List<NewsListData>>()
     var newsListNext: String = ""
         private set
 
@@ -169,6 +170,20 @@ class NewsRepo {
             override fun onResponse(call: Call<NewsData>?, response: Response<NewsData>?) {
                 response?.body()?.let {
                     newsData.value = it
+                }
+            }
+        })
+    }
+
+    fun search(text: String) {
+        mNewsService.search(text).enqueue(object : Callback<Page<NewsListData>> {
+            override fun onFailure(call: Call<Page<NewsListData>>?, t: Throwable?) {
+                newsDataSearch.value = null
+            }
+
+            override fun onResponse(call: Call<Page<NewsListData>>?, response: Response<Page<NewsListData>>?) {
+                response?.body()?.let {
+                    newsDataSearch.value = it.results
                 }
             }
         })
