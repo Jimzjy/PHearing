@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">爸妈听力圈</string>
+    <string name="app_name">小儿测听</string>
     <string name="measure_headphone">测量耳机</string>
     <string name="measure_data_format">方向: %s 频率: %d dB: %.1f</string>
     <string name="measure_prepare_hint">请将您耳机的右侧靠近手机麦克风, 然后您就可以点击开始按钮开始测量.\n\n如果您不熟悉操作, 这里有一些引导, 请向右滑动查看</string>
@@ -110,7 +110,7 @@
     <string name="auth_update_avatar_successful">更新头像成功</string>
     <string name="auth_register_successful">注册成功</string>
     <string name="auth_register_failed">注册失败</string>
-    <string name="news_loading_failed">加载失败</string>
+    <string name="news_loading_failed">加载新闻失败</string>
     <string name="news_loading_successful">加载成功</string>
     <string name="about">关于</string>
     <string name="open_source_license">开源许可</string>
